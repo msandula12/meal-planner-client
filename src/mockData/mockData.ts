@@ -1,7 +1,7 @@
 import { MealType } from '../constants/enums';
 import { Day } from '../constants/interfaces';
 
-export const MOCK_DAY: Day = {
+const MOCK_DAY: Day = {
   day: new Date(),
   meals: [
     {

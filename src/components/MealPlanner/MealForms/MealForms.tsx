@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import moment from 'moment';
-import { Paper, Grid, Typography } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 
 import MealForm from './MealForm/MealForm';
 
