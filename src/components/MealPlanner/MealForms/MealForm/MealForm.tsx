@@ -15,8 +15,8 @@ const MealForm: FC<Props> = ({ meal }) => {
           <Typography variant='h6' gutterBottom>
             {meal.type.toUpperCase()}
           </Typography>
-          <TextField fullWidth label='Name' margin='dense' value={meal.name} variant='outlined' />
-          <TextField fullWidth label='URL' margin='dense' value={meal.url} variant='outlined' />
+          <TextField fullWidth label='Meal' margin='dense' value={meal.name} variant='outlined' />
+          {/* <TextField fullWidth label='URL' margin='dense' value={meal.url} variant='outlined' /> */}
         </CardContent>
       </Card>
     </Grid>
