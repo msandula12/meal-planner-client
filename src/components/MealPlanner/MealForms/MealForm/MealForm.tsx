@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Card, Grid, Typography } from '@material-ui/core';
+import { Card, CardContent, Grid, TextField, Typography } from '@material-ui/core';
 
 import { Meal } from '../../../../constants/interfaces';
 
@@ -9,12 +9,15 @@ type Props = {
 
 const MealForm: FC<Props> = ({ meal }) => {
   return (
-    <Grid item>
+    <Grid item sm={4} xs={12}>
       <Card>
-        <Typography variant='h6'>
-          {meal.type.toUpperCase()}
-        </Typography>
-
+        <CardContent>
+          <Typography variant='h6' gutterBottom>
+            {meal.type.toUpperCase()}
+          </Typography>
+          <TextField fullWidth label='Name' margin='dense' value={meal.name} variant='outlined' />
+          <TextField fullWidth label='URL' margin='dense' value={meal.url} variant='outlined' />
+        </CardContent>
       </Card>
     </Grid>
   )
