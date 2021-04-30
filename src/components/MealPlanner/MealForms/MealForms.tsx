@@ -1,21 +1,31 @@
 import { FC } from 'react';
-import { Grid } from '@material-ui/core';
+import moment from 'moment';
+import { Paper, Grid, Typography } from '@material-ui/core';
 
 import MealForm from './MealForm/MealForm';
 
 import { Day } from '../../../constants/interfaces';
 
 type Props = {
-  day: Day;
+  day: Day | null;
 }
 
 const MealForms: FC<Props> = ({ day }) => {
   return (
-    <Grid container alignItems='stretch' justify='center' spacing={1}>
-      {day.meals.map(meal => (
-        <MealForm key={meal.type} meal={meal} /> 
-      ))}  
-    </Grid>
+    <Paper variant='outlined'>
+      {day ? (
+        <>
+          <Typography variant='h5' gutterBottom>{moment(day.day).format('dddd, MMMM D')}</Typography>
+          <Grid container alignItems='stretch' justify='center' spacing={1}>
+            {day.meals.map(meal => (
+              <MealForm key={meal.type} meal={meal} /> 
+            ))}
+          </Grid>
+        </>
+      ) : (
+        <Typography variant='h5'>Select a day to edit</Typography>
+      )}
+    </Paper>
   )
 }
 
