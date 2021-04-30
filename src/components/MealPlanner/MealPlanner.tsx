@@ -8,7 +8,7 @@ import { Day } from '../../constants/interfaces';
 
 import useStyles from './styles';
 
-const MOCK_DAY = {
+const MOCK_DAY: Day = {
   day: new Date(),
   meals: [
     {
