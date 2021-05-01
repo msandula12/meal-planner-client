@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 import MealForms from './MealForms/MealForms';
 import Schedule from './Schedule/Schedule';
@@ -14,9 +14,6 @@ const MealPlanner = () => {
 
   return (
     <Container className={classes.root}>
-      <Typography variant='h6'>
-        Plan your meals for the next two weeks
-      </Typography>
       <Schedule setSelectedDay={setSelectedDay} />
       <MealForms day={selectedDay}/>
     </Container>
