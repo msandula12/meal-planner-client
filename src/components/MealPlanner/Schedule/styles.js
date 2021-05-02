@@ -9,7 +9,11 @@ export default makeStyles(() => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(7, 1fr)',
     border: '1px solid #ddd',
-    background: '#ddd',
+    backgroundColor: '#ddd',
     gridGap: '1px',
+  },
+  dayOfWeek: {
+    backgroundColor: 'white',
+    textAlign: 'center',
   },
 }));
