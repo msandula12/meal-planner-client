@@ -4,6 +4,8 @@ import { Typography } from '@material-ui/core';
 
 import { Day } from '../../../../constants/interfaces';
 
+import ScheduleMeal from './ScheduleMeal/ScheduleMeal';
+
 import useStyles from './styles';
 
 type Props = {
@@ -24,9 +26,7 @@ const ScheduleDay: FC<Props> = ({ day, setSelectedDay }) => {
     <div className={classes.day} onClick={editDay}>
       <Typography variant='subtitle2' gutterBottom>{dateDisplay}</Typography>
       {day.meals.map(meal => (
-        <div key={`${dateDisplay}-${meal.type}`} className={classes.meal}>
-          <Typography variant='body2' gutterBottom>{meal.name}</Typography>
-        </div>
+        <ScheduleMeal key={`${dateDisplay}-${meal.type}`} meal={meal} />
       ))}
     </div>
   )
