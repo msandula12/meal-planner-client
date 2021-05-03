@@ -3,11 +3,11 @@ import moment from 'moment';
 import { Divider, Drawer, IconButton, Typography } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import MealForm from './MealForm/MealForm';
+import { Day } from 'constants/interfaces';
+import { useAppDispatch } from 'hooks';
+import { changeSelectedDay } from 'reducers/scheduleSlice';
 
-import { Day } from '../../../constants/interfaces';
-import { useAppDispatch } from '../../../hooks';
-import { changeSelectedDay } from '../../../reducers/scheduleSlice';
+import MealForm from './MealForm/MealForm';
 
 import useStyles from './styles';
 

@@ -2,12 +2,11 @@ import { FC } from 'react';
 import moment from 'moment';
 import { Typography } from '@material-ui/core';
 
+import { Day } from 'constants/interfaces';
+import { useAppDispatch } from 'hooks';
+import { changeSelectedDay } from 'reducers/scheduleSlice';
+
 import ScheduleMeal from './ScheduleMeal/ScheduleMeal';
-
-import { Day } from '../../../../constants/interfaces';
-import { useAppDispatch } from '../../../../hooks';
-import { changeSelectedDay } from '../../../../reducers/scheduleSlice';
-
 
 import useStyles from './styles';
 

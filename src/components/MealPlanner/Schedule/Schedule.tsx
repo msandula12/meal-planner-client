@@ -2,7 +2,7 @@ import { FC } from 'react';
 import moment from 'moment';
 import { Card, Typography } from '@material-ui/core';
 
-import { MOCK_SCHEDULE } from '../../../mockData/mockData';
+import { MOCK_SCHEDULE } from 'mockData/mockData';
 
 import ScheduleDay from './ScheduleDay/ScheduleDay';
 

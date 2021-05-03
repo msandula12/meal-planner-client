@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Typography } from '@material-ui/core';
 
-import { Meal } from '../../../../../constants/interfaces';
+import { Meal } from 'constants/interfaces';
 
 import useStyles from './styles';
 

@@ -1,5 +1,5 @@
-import MealPlanner from './components/MealPlanner/MealPlanner';
-import NavBar from './components/NavBar/NavBar';
+import MealPlanner from 'components/MealPlanner/MealPlanner';
+import NavBar from 'components/NavBar/NavBar';
 
 import useStyles from './styles';
 

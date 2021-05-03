@@ -1,10 +1,10 @@
 import { Container } from '@material-ui/core';
 
+import { useAppSelector } from 'hooks';
+import { selectSelectedDay } from 'reducers/scheduleSlice';
+
 import MealForms from './MealForms/MealForms';
 import Schedule from './Schedule/Schedule';
-
-import { useAppSelector } from '../../hooks';
-import { selectSelectedDay } from '../../reducers/scheduleSlice';
 
 import useStyles from './styles';
 

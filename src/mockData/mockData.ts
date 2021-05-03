@@ -1,5 +1,5 @@
-import { MealType } from '../constants/enums';
-import { Day } from '../constants/interfaces';
+import { MealType } from 'constants/enums';
+import { Day } from 'constants/interfaces';
 
 const MOCK_DAY: Day = {
   day: new Date(),
