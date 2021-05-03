@@ -15,7 +15,7 @@ const MealPlanner = () => {
   return (
     <Container className={classes.root}>
       <Schedule setSelectedDay={setSelectedDay} />
-      <MealForms day={selectedDay}/>
+      {selectedDay && <MealForms day={selectedDay}/>}
     </Container>
   )
 }
