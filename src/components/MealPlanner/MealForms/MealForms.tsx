@@ -6,6 +6,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import MealForm from './MealForm/MealForm';
 
 import { Day } from '../../../constants/interfaces';
+import { useAppDispatch } from '../../../hooks';
+import { changeSelectedDay } from '../../../reducers/scheduleSlice';
 
 import useStyles from './styles';
 
@@ -15,9 +17,10 @@ type Props = {
 
 const MealForms: FC<Props> = ({ day }) => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
 
   const closeMealForms = () => {
-    console.log('Close <MealForms />');
+    dispatch(changeSelectedDay(null));
   }
 
   return (

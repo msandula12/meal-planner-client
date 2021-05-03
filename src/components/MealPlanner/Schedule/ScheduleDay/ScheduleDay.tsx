@@ -2,22 +2,25 @@ import { FC } from 'react';
 import moment from 'moment';
 import { Typography } from '@material-ui/core';
 
-import { Day } from '../../../../constants/interfaces';
-
 import ScheduleMeal from './ScheduleMeal/ScheduleMeal';
+
+import { Day } from '../../../../constants/interfaces';
+import { useAppDispatch } from '../../../../hooks';
+import { changeSelectedDay } from '../../../../reducers/scheduleSlice';
+
 
 import useStyles from './styles';
 
 type Props = {
   day: Day;
-  setSelectedDay: (day: Day) => void;
 }
 
-const ScheduleDay: FC<Props> = ({ day, setSelectedDay }) => {
+const ScheduleDay: FC<Props> = ({ day }) => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
 
   const editDay = (): void => {
-    setSelectedDay(day);
+    dispatch(changeSelectedDay(day));
   };
 
   const dateDisplay = moment(day.day).format('MMM D');

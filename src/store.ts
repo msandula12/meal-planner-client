@@ -2,12 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import scheduleReducer from './reducers/scheduleSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     schedule: scheduleReducer,
   },
 });
 
+// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-
-export default store;
+// Inferred type: { schedule: ScheduleState, ...etc. }
+export type AppDispatch = typeof store.dispatch;
