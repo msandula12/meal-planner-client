@@ -24,7 +24,7 @@ const Schedule: FC<Props> = () => {
   return (
     <Card raised className={classes.root} >
       <Typography variant='h6' gutterBottom>
-        Plan your meals for the next two weeks
+        Your meals for the next two weeks:
       </Typography>
       <div className={classes.schedule}>
         {DAYS_OF_WEEK.map(dayOfWeek => (
