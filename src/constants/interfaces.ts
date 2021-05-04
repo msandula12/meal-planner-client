@@ -7,7 +7,7 @@ export interface Day {
 
 export interface Meal extends Recipe {
   schedule: MealType[];
-  starting: Date;
+  startDate: Date;
   type: MealType;
 }
 

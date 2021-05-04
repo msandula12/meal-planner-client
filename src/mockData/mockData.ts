@@ -7,19 +7,19 @@ const MOCK_DAY: Day = {
     {
       name: 'Mixed Berry Smoothie',
       schedule: [],
-      starting: new Date(),
+      startDate: new Date(),
       type: MealType.BREAKFAST,
     },
     {
       name: 'Grilled Chicken Salad',
       schedule: [],
-      starting: new Date(),
+      startDate: new Date(),
       type: MealType.LUNCH,
     },
     {
       name: 'Baked Cod with Veggies',
       schedule: [],
-      starting: new Date(),
+      startDate: new Date(),
       type: MealType.DINNER,
     },
   ]
@@ -32,7 +32,7 @@ export const MOCK_SCHEDULE = Array.from({ length: 14 }).map((_, index) => {
     meals: MOCK_DAY.meals.map(meal => {
       return {
         ...meal,
-        starting: today,
+        startDate: today,
       };
     }),
   };
