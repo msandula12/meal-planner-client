@@ -1,3 +1,5 @@
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import MealPlanner from 'components/MealPlanner/MealPlanner';
 import NavBar from 'components/NavBar/NavBar';
 
@@ -7,10 +9,14 @@ const App = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <NavBar />
-      <MealPlanner />
-    </div>
+    <BrowserRouter>
+      <div className={classes.root}>
+        <NavBar />
+        <Switch>
+          <Route path='/' exact component={MealPlanner} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   )
 }
 
