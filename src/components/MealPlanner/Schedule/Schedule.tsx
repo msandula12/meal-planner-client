@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import moment from 'moment';
 import { Card, Typography } from '@material-ui/core';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import { MOCK_SCHEDULE } from 'mockData/mockData';
 
@@ -20,6 +21,7 @@ type Props = {}
 
 const Schedule: FC<Props> = () => {
   const classes = useStyles();
+  const currentUser = null;
 
   return (
     <Card raised className={classes.root} >
@@ -36,6 +38,12 @@ const Schedule: FC<Props> = () => {
           <ScheduleDay key={moment(day.day).format('MM-DD-YYYY')} day={day} />         
         ))}
       </div>
+      {!currentUser && (
+        <div className={classes.notice}>
+          <InfoOutlinedIcon color='primary' style={{ marginRight: '0.5rem' }} />
+          <Typography variant='body2'>The above schedule is just sample data. Please sign in or create an account to start planning your own meals!</Typography>
+        </div>
+      )}
     </Card>
   )
 }

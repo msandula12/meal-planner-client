@@ -16,4 +16,12 @@ export default makeStyles(() => ({
     backgroundColor: 'white',
     textAlign: 'center',
   },
+  notice: {
+    alignItems: 'center',
+    backgroundColor: 'rgb(232, 244, 253)',
+    borderRadius: '0.25rem',
+    display: 'flex',
+    marginTop: '1rem',
+    padding: '0.5rem 1rem',
+  },
 }));
