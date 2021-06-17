@@ -1,13 +1,13 @@
 import { MealType } from './enums';
 
 export interface Day {
-  day: Date;
+  day: string;
   meals: Meal[];
 }
 
 export interface Meal extends Recipe {
   schedule: MealType[];
-  startDate: Date;
+  startDate: string;
   type: MealType;
 }
 
