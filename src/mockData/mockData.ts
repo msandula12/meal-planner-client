@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { MealType } from 'constants/enums';
 import { Day } from 'constants/interfaces';
@@ -28,7 +28,7 @@ const MOCK_DAY: Day = {
 };
 
 export const MOCK_SCHEDULE = Array.from({ length: 14 }).map((_, index) => {
-  const day = moment()
+  const day = dayjs()
     .startOf('week')
     .add(index + 1, 'days')
     .toISOString();
