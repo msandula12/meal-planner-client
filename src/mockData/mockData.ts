@@ -32,6 +32,8 @@ export const MOCK_SCHEDULE = Array.from({ length: 14 }).map((_, index) => {
     .startOf('week')
     .add(index + 1, 'days')
     .toISOString();
+
+  // const isToday = dayjs().isSame(dayjs(day), 'day');
   return {
     day,
     meals: MOCK_DAY.meals.map((meal) => {
