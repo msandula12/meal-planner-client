@@ -6,13 +6,13 @@ function DayPlanner() {
   const updateInput = () => {};
 
   return (
-    <section className="container day">
-      <div className="selected-day-container">
-        <BiCaretLeft className="icon nav-icon" />
-        <span className="selected-day">Today</span>
-        <BiCaretRight className="icon nav-icon" />
+    <section className="container day-planner">
+      <div className="day-planner-header">
+        <BiCaretLeft className="icon day-selector-icon" />
+        <span className="day-planner-day">Today</span>
+        <BiCaretRight className="icon day-selector-icon" />
       </div>
-      <div className="meals">
+      <div className="day-planner-meals">
         <div className="input-group">
           <label className="input-label" htmlFor="breakfast">
             Breakfast

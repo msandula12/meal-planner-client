@@ -6,9 +6,9 @@ import Schedule from '../Schedule/Schedule';
 
 function MealPlanner() {
   return (
-    <div className="container dashboard">
+    <div className="container meal-planner">
       <Header />
-      <div className="main">
+      <div className="meal-planner-dashboard">
         <Schedule />
         <DayPlanner />
       </div>

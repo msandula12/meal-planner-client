@@ -1,16 +1,16 @@
 .schedule {
-  margin-top: 1rem;
-  flex: 1;
   display: grid;
-  margin-right: 1rem;
+  flex: 1;
   grid-gap: 1rem 0.5rem;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto repeat(2, 1fr);
+  margin-right: 1rem;
+  margin-top: 1rem;
 }
 
 .day-of-week {
-  text-transform: uppercase;
-  font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.4);
+  font-size: 0.8rem;
   text-align: center;
+  text-transform: uppercase;
 }

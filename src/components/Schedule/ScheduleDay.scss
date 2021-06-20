@@ -1,59 +1,68 @@
 @import '../../styles/variables';
 
-.calendar-day {
+.schedule-day {
   border-radius: 0.5rem;
-  padding: 1rem;
   display: flex;
-  min-width: 0;
   flex-direction: column;
+  min-width: 0;
+  padding: 1rem;
+
+  &:hover {
+    background-color: rgba(161, 219, 241, 0.5);
+    cursor: pointer;
+  }
+
+  &.selected {
+    background-color: $green;
+  }
 }
 
-.calendar-day:hover {
-  cursor: pointer;
-  background-color: rgba(161, 219, 241, 0.5);
-}
-
-.calendar-day.calendar-day-current {
-  background-color: $green;
-}
-
-.calendar-day-date {
+.schedule-day-date {
   font-size: 0.8rem;
-  text-align: center;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  text-align: center;
+
+  &.is-today {
+    color: $lightBlue;
+  }
 }
 
-.calendar-day-date.is-today {
-  color: $lightBlue;
-  /* color: $green; */
-}
-
-.calendar-meals {
-  flex: 1;
+.schedule-day-meals {
   display: flex;
   flex-direction: column;
+  flex: 1;
   justify-content: space-evenly;
 }
 
-.meal {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
-  flex: 1;
-  display: flex;
+.schedule-day-meal {
   align-items: center;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex: 1;
+  font-family: $bodyFont;
+  font-size: 0.8rem;
   justify-content: center;
+  outline: none;
+  overflow: hidden;
+  padding: 0.25rem 0.5rem;
+  resize: none;
   text-align: center;
-}
 
-.meal.breakfast {
-  background-color: #7dd3dd;
-}
+  &:hover {
+    cursor: inherit;
+  }
 
-.meal.lunch {
-  background-color: #a7c8f7;
-}
+  &.breakfast {
+    background-color: #7dd3dd;
+  }
 
-.meal.dinner {
-  background-color: #e6b8df;
+  &.lunch {
+    background-color: #a7c8f7;
+  }
+
+  &.dinner {
+    background-color: #e6b8df;
+  }
 }

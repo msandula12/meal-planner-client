@@ -1,25 +1,25 @@
 @import '../../styles/variables';
 
-.nav {
-  display: flex;
+.header-nav {
   align-items: center;
+  display: flex;
   margin-bottom: 1rem;
 }
 
-.logo {
-  flex: 1;
+.header-logo {
   color: $bgColor;
+  flex: 1;
   font-family: $accentFont;
-  font-weight: bold;
   font-size: 2rem;
+  font-weight: bold;
 }
 
-.nav-actions {
-  display: flex;
+.header-nav-actions {
   align-items: center;
-}
+  display: flex;
 
-.nav .icon {
-  font-size: 1.5rem;
-  margin-left: 1rem;
+  .icon {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
 }

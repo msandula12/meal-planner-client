@@ -1,47 +1,30 @@
 @import '../../styles/variables';
 
-.day {
-  margin-right: -4rem;
+.day-planner {
   background-color: $green;
   display: flex;
   flex-direction: column;
+  margin-right: -4rem;
 }
 
-.selected-day-container {
-  display: flex;
+.day-planner-header {
   align-items: center;
+  display: flex;
 }
 
-.selected-day {
+.day-planner-day {
   flex: 1;
   text-align: center;
 }
 
-.icon {
-  opacity: 0.4;
-}
-
-.icon:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.nav-icon {
+.day-selector-icon {
   font-size: 1.5rem;
 }
 
-.meals {
-  flex: 1;
+.day-planner-meals {
+  background: transparent;
   display: flex;
   flex-direction: column;
+  flex: 1;
   justify-content: center;
-}
-
-textarea {
-  overflow: hidden;
-  border: none;
-  resize: none;
-  outline: none;
-  font-size: 1rem;
-  font-family: $bodyFont;
 }

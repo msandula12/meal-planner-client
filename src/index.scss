@@ -1,5 +1,6 @@
 @import './styles/variables';
 
+/* Element */
 * {
   box-sizing: border-box;
   font-size: 1rem;
@@ -7,9 +8,75 @@
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   background-color: $bgColor;
   font-family: $bodyFont;
   padding: 2rem 4rem 2rem 2rem;
+}
+
+/* General */
+.btn {
+  border-radius: 0.25rem;
+  border: 2px solid $accentColorDarkened;
+  box-shadow: 0 0.5rem 0 $accentColorDarkened;
+  padding: 0.75rem 1rem;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+  }
+
+  &.btn-primary {
+    background-color: $bgColor;
+    color: white;
+  }
+}
+
+.container {
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.icon {
+  opacity: 0.4;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.input-group:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  color: rgba(0, 0, 0, 0.4);
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.placeholder {
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+}
+
+.text-input {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+  width: 100%;
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: $bgColor;
+    outline: none;
+  }
 }

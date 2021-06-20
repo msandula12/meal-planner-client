@@ -14,14 +14,14 @@ function ScheduleDay({ day }: Props) {
   const updateInput = () => {};
 
   return (
-    <div className="calendar-day">
-      <p className="calendar-day-date">
+    <div className="schedule-day">
+      <p className="schedule-day-date">
         {isToday ? 'Today' : dayjs(day.day).format('MMM DD')}
       </p>
-      <div className="calendar-meals">
+      <div className="schedule-day-meals">
         {day.meals.map((meal) => (
           <textarea
-            className={`meal ${
+            className={`schedule-day-meal ${
               meal.name.length > 0 ? meal.type : 'placeholder'
             }`}
             key={meal.type}

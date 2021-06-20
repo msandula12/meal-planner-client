@@ -1,79 +1,13 @@
 @import '../../styles/variables';
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* General */
-.btn {
-  border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 0.25rem;
-  border: 2px solid $accentColorDarkened;
-  box-shadow: 0 0.5rem 0 $accentColorDarkened;
-}
-
-.btn:hover {
-  filter: brightness(0.8);
-  cursor: pointer;
-}
-
-.btn-primary {
-  background-color: $bgColor;
-  color: white;
-}
-
-.container {
-  padding: 2rem;
-  border-radius: 1rem;
-}
-
-.input-group:not(:last-of-type) {
-  margin-bottom: 1rem;
-}
-
-.input-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.placeholder {
-  background: transparent;
-  font-style: italic;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.text-input {
-  border: none;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
-  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-}
-
-.text-input:focus {
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-color: $bgColor;
-}
-
-/* <SECTION> */
-.dashboard {
+.meal-planner {
   background-color: $lightBlue;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 
-.main {
+.meal-planner-dashboard {
   display: flex;
   flex: 1;
 }

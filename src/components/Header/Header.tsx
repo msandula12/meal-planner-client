@@ -9,9 +9,9 @@ function Header() {
 
   return (
     <header>
-      <nav className="nav">
-        <span className="logo">MealPlanner</span>
-        <span className="nav-actions">
+      <nav className="header-nav">
+        <span className="header-logo">MealPlanner</span>
+        <span className="header-nav-actions">
           {user ? (
             <>
               <span>Welcome, {user.name}!</span>
