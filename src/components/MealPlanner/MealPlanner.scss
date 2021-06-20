@@ -82,25 +82,6 @@ ul {
   flex-direction: column;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.logo {
-  flex: 1;
-  color: $bgColor;
-  font-family: $accentFont;
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-.nav .icon {
-  font-size: 1.5rem;
-  margin-left: 1rem;
-}
-
 .main {
   display: flex;
   flex: 1;
