@@ -1,9 +1,10 @@
 import dayjs from 'dayjs';
-
 import localeData from 'dayjs/plugin/localeData';
 import updateLocale from 'dayjs/plugin/updateLocale';
 
 import { getMockSchedule } from '../../mockData/mockData';
+
+import ScheduleDay from './ScheduleDay';
 
 import './Schedule.scss';
 
@@ -18,8 +19,6 @@ function Schedule() {
   const schedule = getMockSchedule();
   const weekdays = dayjs.localeData().weekdaysShort();
 
-  const updateInput = () => {};
-
   return (
     <section className="schedule">
       {weekdays.map((day) => (
@@ -27,30 +26,9 @@ function Schedule() {
           {day}
         </div>
       ))}
-      {schedule.map((day) => {
-        const isToday = dayjs().isSame(day.day, 'day');
-        return (
-          <div key={day.day} className="calendar-day">
-            <p className="calendar-day-date">
-              {isToday ? 'Today' : dayjs(day.day).format('MMM DD')}
-            </p>
-            <div className="calendar-meals">
-              {day.meals.map((meal) => (
-                <textarea
-                  className={`meal ${
-                    meal.name.length > 0 ? meal.type : 'placeholder'
-                  }`}
-                  onChange={updateInput}
-                  placeholder="n/a"
-                  readOnly
-                  title={meal.name}
-                  value={meal.name}
-                />
-              ))}
-            </div>
-          </div>
-        );
-      })}
+      {schedule.map((day) => (
+        <ScheduleDay key={day.day} day={day} />
+      ))}
     </section>
   );
 }
