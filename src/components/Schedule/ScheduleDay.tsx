@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { BiRestaurant } from 'react-icons/bi';
 
 import { Day } from '../../constants/interfaces';
 
@@ -16,7 +17,15 @@ function ScheduleDay({ day }: Props) {
   return (
     <div className="schedule-day">
       <p className="schedule-day-date">
-        {isToday ? 'Today' : dayjs(day.day).format('MMM DD')}
+        {isToday ? (
+          <div className="is-today">
+            <BiRestaurant />
+            <span>Today</span>
+            <BiRestaurant />
+          </div>
+        ) : (
+          dayjs(day.day).format('MMM DD')
+        )}
       </p>
       <div className="schedule-day-meals">
         {day.meals.map((meal) => (

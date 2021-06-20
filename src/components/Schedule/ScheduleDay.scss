@@ -23,8 +23,11 @@
   margin-bottom: 0.5rem;
   text-align: center;
 
-  &.is-today {
-    color: $lightBlue;
+  .is-today {
+    align-items: center;
+    color: $bgColor;
+    display: flex;
+    justify-content: space-around;
   }
 }
 
@@ -55,14 +58,14 @@
   }
 
   &.breakfast {
-    background-color: #7dd3dd;
+    background-color: $breakfast;
   }
 
   &.lunch {
-    background-color: #a7c8f7;
+    background-color: $lunch;
   }
 
   &.dinner {
-    background-color: #e6b8df;
+    background-color: $dinner;
   }
 }

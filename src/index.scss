@@ -3,7 +3,6 @@
 /* Element */
 * {
   box-sizing: border-box;
-  font-size: 1rem;
   margin: 0;
 }
 
@@ -70,6 +69,7 @@ body {
   border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
+  font-size: 1rem;
   padding: 0.75rem 1rem;
   transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
   width: 100%;
