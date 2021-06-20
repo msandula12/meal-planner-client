@@ -5,13 +5,7 @@ export interface Day {
   meals: Meal[];
 }
 
-export interface Meal extends Recipe {
-  schedule: MealType[];
-  startDate: string;
-  type: MealType;
-}
-
-export interface Recipe {
+export interface Meal {
   name: string;
-  url?: string;
+  type: MealType;
 }

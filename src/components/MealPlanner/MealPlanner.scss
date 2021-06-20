@@ -1,0 +1,216 @@
+@import '../../styles/variables';
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* General */
+.btn {
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  border: 2px solid $accentColorDarkened;
+  box-shadow: 0 0.5rem 0 $accentColorDarkened;
+}
+
+.btn:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: $bgColor;
+  color: white;
+}
+
+.container {
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.icon {
+  opacity: 0.4;
+}
+
+.icon:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.input-group:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.placeholder {
+  font-style: italic;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.text-input {
+  border: none;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+}
+
+.text-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: $bgColor;
+}
+
+/* <SECTION> */
+.dashboard {
+  background-color: $lightBlue;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  flex: 1;
+  color: $bgColor;
+  font-family: $accentFont;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.nav .icon {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+}
+
+textarea {
+  overflow: hidden;
+  border: none;
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: $bodyFont;
+}
+
+/* Schedule */
+.schedule {
+  margin-top: 1rem;
+  flex: 1;
+  display: grid;
+  margin-right: 1rem;
+  grid-gap: 1rem 0.5rem;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto repeat(2, 1fr);
+}
+
+.day-of-week {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.calendar-day {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.calendar-day:hover {
+  cursor: pointer;
+  background-color: rgba(161, 219, 241, 0.5);
+}
+
+.calendar-day.calendar-day-current {
+  background-color: $green;
+}
+
+.calendar-day-date {
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-day-date.is-today {
+  color: $lightBlue;
+  /* color: $green; */
+}
+
+.calendar-meals {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.meal {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.meal.breakfast {
+  background-color: #7dd3dd;
+}
+
+.meal.lunch {
+  background-color: #a7c8f7;
+}
+
+.meal.dinner {
+  background-color: #e6b8df;
+}
+
+/* Selected Day */
+.day {
+  margin-right: -4rem;
+  background-color: $green;
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-day-container {
+  display: flex;
+  align-items: center;
+}
+
+.selected-day {
+  flex: 1;
+  text-align: center;
+}
+
+.meals {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

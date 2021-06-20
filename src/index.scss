@@ -1,0 +1,15 @@
+@import './styles/variables';
+
+* {
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $bgColor;
+  font-family: $bodyFont;
+  padding: 2rem 4rem 2rem 2rem;
+}
