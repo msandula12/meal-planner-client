@@ -18,11 +18,11 @@ function ScheduleDay({ day }: Props) {
     <div className="schedule-day">
       <p className="schedule-day-date">
         {isToday ? (
-          <div className="is-today">
+          <span className="is-today">
             <BiRestaurant />
             <span>Today</span>
             <BiRestaurant />
-          </div>
+          </span>
         ) : (
           dayjs(day.day).format('MMM DD')
         )}
