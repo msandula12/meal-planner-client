@@ -1,3 +1,5 @@
+import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
+
 import './DayPlanner.scss';
 
 function DayPlanner() {
@@ -6,9 +8,9 @@ function DayPlanner() {
   return (
     <section className="container day">
       <div className="selected-day-container">
-        <i className="icon fa fa-chevron-left"></i>
+        <BiCaretLeft className="icon nav-icon" />
         <span className="selected-day">Today</span>
-        <i className="icon fa fa-chevron-right"></i>
+        <BiCaretRight className="icon nav-icon" />
       </div>
       <div className="meals">
         <div className="input-group">
