@@ -1,31 +1,26 @@
 import dayjs from 'dayjs';
-import localeData from 'dayjs/plugin/localeData';
-import updateLocale from 'dayjs/plugin/updateLocale';
 
-import { getMockSchedule } from '../../mockData/mockData';
+import { Day } from '../../constants/interfaces';
 
 import ScheduleDay from './ScheduleDay';
 
 import './Schedule.scss';
 
-dayjs.extend(updateLocale);
-dayjs.extend(localeData);
+type Props = {
+  schedule: Day[];
+};
 
-dayjs.updateLocale('en', {
-  weekdaysShort: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-});
-
-function Schedule() {
-  const schedule = getMockSchedule();
-  const weekdays = dayjs.localeData().weekdaysShort();
-
+function Schedule({ schedule }: Props) {
   return (
     <section className="schedule">
-      {weekdays.map((day) => (
-        <div key={day} className="day-of-week">
-          {day}
-        </div>
-      ))}
+      {schedule.slice(7).map((day) => {
+        const dayOfWeek = dayjs(day.day).format('ddd');
+        return (
+          <div key={dayOfWeek} className="day-of-week">
+            {dayOfWeek}
+          </div>
+        );
+      })}
       {schedule.map((day) => (
         <ScheduleDay key={day.day} day={day} />
       ))}
