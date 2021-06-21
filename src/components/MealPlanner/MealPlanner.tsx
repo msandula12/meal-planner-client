@@ -25,6 +25,12 @@ function MealPlanner() {
     setSelectedDay(day);
   };
 
+  const handleUpdateSchedule = (updatedDay: Day) => {
+    setSchedule((prevSchedule) =>
+      prevSchedule.map((day) => (day.day === updatedDay.day ? updatedDay : day))
+    );
+  };
+
   return (
     <div className="container meal-planner">
       <Header />
@@ -34,7 +40,10 @@ function MealPlanner() {
           selectedDay={selectedDay}
           setSelectedDay={handleSelectedDay}
         />
-        <DayPlanner selectedDay={selectedDay} />
+        <DayPlanner
+          selectedDay={selectedDay}
+          updateSchedule={handleUpdateSchedule}
+        />
       </div>
     </div>
   );

@@ -1,21 +1,20 @@
-import { BaseSyntheticEvent, useState } from 'react';
+import { BaseSyntheticEvent } from 'react';
 
 import { MealType } from '../../constants/enums';
 
 type Props = {
+  handleUpdate: (value: string) => void;
   meal: string;
   mealType: MealType;
 };
 
-function DayPlannerInput({ meal, mealType }: Props) {
-  const [value, setValue] = useState(meal);
-
+function DayPlannerInput({ handleUpdate, meal, mealType }: Props) {
   const updateInput = ({ target }: BaseSyntheticEvent) => {
-    setValue(target.value);
+    handleUpdate(target.value);
   };
 
   return (
-    <div key={mealType} className="input-group">
+    <div className="input-group">
       <label className="input-label" htmlFor={mealType}>
         {mealType}
       </label>
@@ -25,7 +24,7 @@ function DayPlannerInput({ meal, mealType }: Props) {
         onChange={updateInput}
         placeholder={`What's for ${mealType}?`}
         type="text"
-        value={value}
+        value={meal}
       />
     </div>
   );

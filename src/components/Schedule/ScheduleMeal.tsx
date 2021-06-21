@@ -13,7 +13,6 @@ function ScheduleMeal({ meal, mealType }: Props) {
   return (
     <textarea
       className={`schedule-meal ${meal.length > 0 ? mealType : 'placeholder'}`}
-      key={mealType}
       onChange={updateInput}
       placeholder="n/a"
       readOnly

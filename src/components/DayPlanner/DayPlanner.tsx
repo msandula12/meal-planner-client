@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 
 import { MealType } from '../../constants/enums';
@@ -10,12 +11,36 @@ import './DayPlanner.scss';
 
 type Props = {
   selectedDay: Day | undefined;
+  updateSchedule: (day: Day) => void;
 };
 
-function DayPlanner({ selectedDay }: Props) {
+function DayPlanner({ selectedDay, updateSchedule }: Props) {
+  const [breakfast, setBreakfast] = useState('');
+  const [lunch, setLunch] = useState('');
+  const [dinner, setDinner] = useState('');
+
+  useEffect(() => {
+    if (selectedDay) {
+      setBreakfast(selectedDay.meals[MealType.BREAKFAST]);
+      setLunch(selectedDay.meals[MealType.LUNCH]);
+      setDinner(selectedDay.meals[MealType.DINNER]);
+    }
+  }, [selectedDay]);
+
   if (!selectedDay) {
     return <section className="container day-planner">No day selected</section>;
   }
+
+  const saveMeals = () => {
+    updateSchedule({
+      ...selectedDay,
+      meals: {
+        [MealType.BREAKFAST]: breakfast,
+        [MealType.LUNCH]: lunch,
+        [MealType.DINNER]: dinner,
+      },
+    });
+  };
 
   return (
     <section className="container day-planner">
@@ -26,19 +51,24 @@ function DayPlanner({ selectedDay }: Props) {
       </div>
       <div className="day-planner-meals">
         <DayPlannerInput
-          meal={selectedDay.meals[MealType.BREAKFAST]}
+          handleUpdate={setBreakfast}
+          meal={breakfast}
           mealType={MealType.BREAKFAST}
         />
         <DayPlannerInput
-          meal={selectedDay.meals[MealType.LUNCH]}
+          handleUpdate={setLunch}
+          meal={lunch}
           mealType={MealType.LUNCH}
         />
         <DayPlannerInput
-          meal={selectedDay.meals[MealType.DINNER]}
+          handleUpdate={setDinner}
+          meal={dinner}
           mealType={MealType.DINNER}
         />
       </div>
-      <button className="btn btn-primary">Save</button>
+      <button className="btn btn-primary" onClick={saveMeals}>
+        Save
+      </button>
     </section>
   );
 }
