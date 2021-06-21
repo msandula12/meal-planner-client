@@ -31,6 +31,7 @@ function DayPlanner({ selectedDay }: Props) {
             <input
               className="text-input"
               onChange={updateInput}
+              placeholder={`What's for ${meal.type}?`}
               type="text"
               value={meal.name}
             />
