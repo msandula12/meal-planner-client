@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 
+import { MealType } from '../../constants/enums';
 import { Day } from '../../constants/interfaces';
 import { formatDate } from '../../utils/helpers';
 
@@ -13,6 +15,7 @@ function DayPlanner({ selectedDay }: Props) {
   if (!selectedDay) {
     return <section className="container day-planner">No day selected</section>;
   }
+
   const updateInput = () => {};
 
   return (
@@ -25,11 +28,12 @@ function DayPlanner({ selectedDay }: Props) {
       <div className="day-planner-meals">
         {selectedDay.meals.map((meal) => (
           <div key={meal.type} className="input-group">
-            <label className="input-label" htmlFor="breakfast">
+            <label className="input-label" htmlFor={meal.type}>
               {meal.type}
             </label>
             <input
               className="text-input"
+              id={meal.type}
               onChange={updateInput}
               placeholder={`What's for ${meal.type}?`}
               type="text"
