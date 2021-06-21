@@ -247,8 +247,8 @@ const MOCK_SCHEDULE: Day[] = [
 export const getMockSchedule = (): Day[] => {
   return MOCK_SCHEDULE.map((item, i) => {
     const day = dayjs()
+      .subtract(1, 'day')
       .startOf('week')
-      .subtract(1, 'week')
       .add(i + 1, 'days')
       .toISOString();
 
