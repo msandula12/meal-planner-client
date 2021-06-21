@@ -1,5 +1,3 @@
-import { BiRestaurant } from 'react-icons/bi';
-
 import { Day } from '../../constants/interfaces';
 import { formatDate } from '../../utils/helpers';
 
