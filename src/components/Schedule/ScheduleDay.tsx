@@ -1,7 +1,7 @@
-import dayjs from 'dayjs';
 import { BiRestaurant } from 'react-icons/bi';
 
 import { Day } from '../../constants/interfaces';
+import { formatDate } from '../../utils/helpers';
 
 import './ScheduleDay.scss';
 
@@ -10,21 +10,21 @@ type Props = {
 };
 
 function ScheduleDay({ day }: Props) {
-  const isToday = dayjs().isSame(day.day, 'day');
+  const formattedDate = formatDate(day.day);
 
   const updateInput = () => {};
 
   return (
     <div className="schedule-day">
       <p className="schedule-day-date">
-        {isToday ? (
+        {formattedDate === 'Today' ? (
           <span className="is-today">
             <BiRestaurant />
-            <span>Today</span>
+            <span>{formattedDate}</span>
             <BiRestaurant />
           </span>
         ) : (
-          dayjs(day.day).format('MMM DD')
+          formattedDate
         )}
       </p>
       <div className="schedule-day-meals">
