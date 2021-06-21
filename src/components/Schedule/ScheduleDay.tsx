@@ -27,16 +27,12 @@ function ScheduleDay({ day, isSelected, setSelectedDay }: Props) {
       onClick={handleSelectDay}
       className={`schedule-day ${isSelected ? 'selected' : ''}`}
     >
-      <p className="schedule-day-date">
-        {formattedDate === 'Today' ? (
-          <span className="is-today">
-            <BiRestaurant />
-            <span>{formattedDate}</span>
-            <BiRestaurant />
-          </span>
-        ) : (
-          formattedDate
-        )}
+      <p
+        className={`schedule-day-date ${
+          formattedDate === 'Today' ? 'is-today' : ''
+        }`}
+      >
+        {formattedDate}
       </p>
       <div className="schedule-day-meals">
         {day.meals.map((meal) => (
