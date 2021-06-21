@@ -2,10 +2,9 @@ import { MealType } from './enums';
 
 export interface Day {
   day: string;
-  meals: Meal[];
+  meals: Meal;
 }
 
-export interface Meal {
-  name: string;
-  type: MealType;
-}
+export type Meal = {
+  [key in MealType]: string;
+};

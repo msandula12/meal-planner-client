@@ -1,5 +1,8 @@
+import { MealType } from '../../constants/enums';
 import { Day } from '../../constants/interfaces';
 import { formatDate } from '../../utils/helpers';
+
+import ScheduleMeal from './ScheduleMeal';
 
 import './ScheduleDay.scss';
 
@@ -18,8 +21,6 @@ function ScheduleDay({ day, isSelected, setSelectedDay }: Props) {
     }
   };
 
-  const updateInput = () => {};
-
   return (
     <div
       onClick={handleSelectDay}
@@ -33,19 +34,18 @@ function ScheduleDay({ day, isSelected, setSelectedDay }: Props) {
         {formattedDate}
       </p>
       <div className="schedule-day-meals">
-        {day.meals.map((meal) => (
-          <textarea
-            className={`schedule-day-meal ${
-              meal.name.length > 0 ? meal.type : 'placeholder'
-            }`}
-            key={meal.type}
-            onChange={updateInput}
-            placeholder="n/a"
-            readOnly
-            title={meal.name}
-            value={meal.name}
-          />
-        ))}
+        <ScheduleMeal
+          meal={day.meals[MealType.BREAKFAST]}
+          mealType={MealType.BREAKFAST}
+        />
+        <ScheduleMeal
+          meal={day.meals[MealType.LUNCH]}
+          mealType={MealType.LUNCH}
+        />
+        <ScheduleMeal
+          meal={day.meals[MealType.DINNER]}
+          mealType={MealType.DINNER}
+        />
       </div>
     </div>
   );

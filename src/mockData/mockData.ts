@@ -6,241 +6,115 @@ import { Day } from 'constants/interfaces';
 const MOCK_SCHEDULE: Day[] = [
   {
     day: '',
-    meals: [
-      {
-        name: '',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Grilled chicken salad',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Baked cod with veggies',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: '',
+      [MealType.LUNCH]: 'Grilled chicken salad',
+      [MealType.DINNER]: 'Baked cod with veggies',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: '',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Grilled chicken salad',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Baked cod with veggies',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: '',
+      [MealType.LUNCH]: 'Grilled chicken salad',
+      [MealType.DINNER]: 'Baked cod with veggies',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Yogurt with granola',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Grilled chicken salad',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Shrimp scampi',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Yogurt with granola',
+      [MealType.LUNCH]: 'Grilled chicken salad',
+      [MealType.DINNER]: 'Shrimp scampi',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: '',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Tuna sandwich',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Shrimp scampi',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: '',
+      [MealType.LUNCH]: 'Tuna sandwich',
+      [MealType.DINNER]: 'Shrimp scampi',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Mixed berry smoothie',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Tuna sandwich',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Dinner out with friends',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Mixed berry smoothie',
+      [MealType.LUNCH]: 'Tuna sandwich',
+      [MealType.DINNER]: 'Dinner out with friends',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Spinach omelette',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: '',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Grilled steak',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Spinach omelette',
+      [MealType.LUNCH]: '',
+      [MealType.DINNER]: 'Grilled steak',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Spinach omelette',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Grilled steak',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Spaghetti and meatballs',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Spinach omelette',
+      [MealType.LUNCH]: 'Grilled steak',
+      [MealType.DINNER]: 'Spaghetti and meatballs',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: '',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Spaghetti and meatballs',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Chicken piccata',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: '',
+      [MealType.LUNCH]: 'Spaghetti and meatballs',
+      [MealType.DINNER]: 'Chicken piccata',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: '',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Spaghetti and meatballs',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Chicken piccata',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: '',
+      [MealType.LUNCH]: 'Spaghetti and meatballs',
+      [MealType.DINNER]: 'Chicken piccata',
+    },
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Mixed berry smoothie',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Chinese takeout',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Salmon and asparagus',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Mixed berry smoothie',
+      [MealType.LUNCH]: 'Chinese takeout',
+      [MealType.DINNER]: 'Salmon and asparagus',
+    },    
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Mixed berry smoothie',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Chinese takeout',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Salmon and asparagus',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Mixed berry smoothie',
+      [MealType.LUNCH]: 'Chinese takeout',
+      [MealType.DINNER]: 'Salmon and asparagus',
+    },  
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Mixed berry smoothie',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Caesar salad',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Pizza',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Mixed berry smoothie',
+      [MealType.LUNCH]: 'Caesar salad',
+      [MealType.DINNER]: 'Pizza',
+    },  
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Oatmeal',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: 'Caesar salad and leftover pizza',
-        type: MealType.LUNCH,
-      },
-      {
-        name: 'Dinner out with friends',
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Oatmeal',
+      [MealType.LUNCH]: 'Caesar salad and leftover pizza',
+      [MealType.DINNER]: 'Dinner out with friends',
+    },     
   },
   {
     day: '',
-    meals: [
-      {
-        name: 'Oatmeal',
-        type: MealType.BREAKFAST,
-      },
-      {
-        name: '',
-        type: MealType.LUNCH,
-      },
-      {
-        name: "Dinner at mom and dad's",
-        type: MealType.DINNER,
-      },
-    ],
+    meals: {
+      [MealType.BREAKFAST]: 'Oatmeal',
+      [MealType.LUNCH]: '',
+      [MealType.DINNER]: "Dinner at mom and dad's",
+    },
   },
 ];
 

@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+
+.schedule-meal {
+  align-items: center;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex: 1;
+  font-family: $bodyFont;
+  font-size: 0.8rem;
+  justify-content: center;
+  outline: none;
+  overflow: hidden;
+  padding: 0.25rem 0.5rem;
+  resize: none;
+  text-align: center;
+
+  &:hover {
+    cursor: inherit;
+  }
+
+  &.breakfast {
+    background-color: $breakfast;
+  }
+
+  &.lunch {
+    background-color: $lunch;
+  }
+
+  &.dinner {
+    background-color: $dinner;
+  }
+}

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 
 import { MealType } from '../../constants/enums';
 import { Day } from '../../constants/interfaces';
 import { formatDate } from '../../utils/helpers';
+
+import DayPlannerInput from './DayPlannerInput';
 
 import './DayPlanner.scss';
 
@@ -16,8 +17,6 @@ function DayPlanner({ selectedDay }: Props) {
     return <section className="container day-planner">No day selected</section>;
   }
 
-  const updateInput = () => {};
-
   return (
     <section className="container day-planner">
       <div className="day-planner-header">
@@ -26,21 +25,18 @@ function DayPlanner({ selectedDay }: Props) {
         <BiCaretRight className="icon day-selector-icon" />
       </div>
       <div className="day-planner-meals">
-        {selectedDay.meals.map((meal) => (
-          <div key={meal.type} className="input-group">
-            <label className="input-label" htmlFor={meal.type}>
-              {meal.type}
-            </label>
-            <input
-              className="text-input"
-              id={meal.type}
-              onChange={updateInput}
-              placeholder={`What's for ${meal.type}?`}
-              type="text"
-              value={meal.name}
-            />
-          </div>
-        ))}
+        <DayPlannerInput
+          meal={selectedDay.meals[MealType.BREAKFAST]}
+          mealType={MealType.BREAKFAST}
+        />
+        <DayPlannerInput
+          meal={selectedDay.meals[MealType.LUNCH]}
+          mealType={MealType.LUNCH}
+        />
+        <DayPlannerInput
+          meal={selectedDay.meals[MealType.DINNER]}
+          mealType={MealType.DINNER}
+        />
       </div>
       <button className="btn btn-primary">Save</button>
     </section>
