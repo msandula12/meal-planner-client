@@ -9,9 +9,10 @@ import './Schedule.scss';
 type Props = {
   schedule: Day[];
   selectedDay: Day | undefined;
+  setSelectedDay: (day: Day) => void;
 };
 
-function Schedule({ schedule, selectedDay }: Props) {
+function Schedule({ schedule, selectedDay, setSelectedDay }: Props) {
   return (
     <section className="schedule">
       {schedule.slice(7).map((day) => {
@@ -27,6 +28,7 @@ function Schedule({ schedule, selectedDay }: Props) {
           key={day.day}
           day={day}
           isSelected={day.day === selectedDay?.day}
+          setSelectedDay={setSelectedDay}
         />
       ))}
     </section>

@@ -21,11 +21,19 @@ function MealPlanner() {
     setSelectedDay(today);
   }, []);
 
+  const handleSelectedDay = (day: Day) => {
+    setSelectedDay(day);
+  };
+
   return (
     <div className="container meal-planner">
       <Header />
       <div className="meal-planner-dashboard">
-        <Schedule schedule={schedule} selectedDay={selectedDay} />
+        <Schedule
+          schedule={schedule}
+          selectedDay={selectedDay}
+          setSelectedDay={handleSelectedDay}
+        />
         <DayPlanner selectedDay={selectedDay} />
       </div>
     </div>
