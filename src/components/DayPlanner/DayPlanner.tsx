@@ -31,6 +31,17 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
     return <section className="container day-planner">No day selected</section>;
   }
 
+  const canSaveMeals = () => {
+    if (selectedDay) {
+      return (
+        selectedDay.meals[MealType.BREAKFAST] !== breakfast ||
+        selectedDay.meals[MealType.LUNCH] !== lunch ||
+        selectedDay.meals[MealType.DINNER] !== dinner
+      );
+    }
+    return false;
+  };
+
   const saveMeals = () => {
     updateSchedule({
       ...selectedDay,
@@ -66,7 +77,11 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
           mealType={MealType.DINNER}
         />
       </div>
-      <button className="btn btn-primary" onClick={saveMeals}>
+      <button
+        disabled={!canSaveMeals()}
+        className="btn btn-primary"
+        onClick={saveMeals}
+      >
         Save
       </button>
     </section>
