@@ -7,15 +7,16 @@ import './ScheduleDay.scss';
 
 type Props = {
   day: Day;
+  isSelected: boolean;
 };
 
-function ScheduleDay({ day }: Props) {
+function ScheduleDay({ day, isSelected }: Props) {
   const formattedDate = formatDate(day.day);
 
   const updateInput = () => {};
 
   return (
-    <div className="schedule-day">
+    <div className={`schedule-day ${isSelected ? 'selected' : ''}`}>
       <p className="schedule-day-date">
         {formattedDate === 'Today' ? (
           <span className="is-today">

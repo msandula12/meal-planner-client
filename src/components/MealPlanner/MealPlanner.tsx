@@ -25,7 +25,7 @@ function MealPlanner() {
     <div className="container meal-planner">
       <Header />
       <div className="meal-planner-dashboard">
-        <Schedule schedule={schedule} />
+        <Schedule schedule={schedule} selectedDay={selectedDay} />
         <DayPlanner selectedDay={selectedDay} />
       </div>
     </div>
