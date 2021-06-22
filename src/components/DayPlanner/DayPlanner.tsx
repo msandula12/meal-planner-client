@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 import classNames from 'classnames';
@@ -41,20 +41,20 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
     }
   }, [selectedDay]);
 
+  const canSaveMeals = useMemo(() => {
+    if (!selectedDay) {
+      return false;
+    }
+    return (
+      selectedDay.meals[MealType.BREAKFAST] !== breakfast ||
+      selectedDay.meals[MealType.LUNCH] !== lunch ||
+      selectedDay.meals[MealType.DINNER] !== dinner
+    );
+  }, [breakfast, lunch, dinner, selectedDay]);
+
   if (!selectedDay) {
     return <section className="container day-planner">No day selected</section>;
   }
-
-  const canSaveMeals = () => {
-    if (selectedDay) {
-      return (
-        selectedDay.meals[MealType.BREAKFAST] !== breakfast ||
-        selectedDay.meals[MealType.LUNCH] !== lunch ||
-        selectedDay.meals[MealType.DINNER] !== dinner
-      );
-    }
-    return false;
-  };
 
   const saveMeals = () => {
     updateSchedule({
@@ -112,7 +112,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
         />
       </div>
       <button
-        disabled={!canSaveMeals()}
+        disabled={!canSaveMeals}
         className="btn btn-primary"
         onClick={saveMeals}
       >
