@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
+import classNames from 'classnames';
 
 import { MealType } from 'constants/enums';
 import { Day } from 'constants/interfaces';
+import {
+  canSelectNextDay,
+  canSelectPrevDay,
+} from 'redux/reducers/scheduleSlice';
 import { formatDate } from 'utils/helpers';
 
 import DayPlannerInput from './DayPlannerInput';
@@ -18,6 +24,9 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
   const [breakfast, setBreakfast] = useState('');
   const [lunch, setLunch] = useState('');
   const [dinner, setDinner] = useState('');
+
+  const disablePrev = !useSelector(canSelectPrevDay);
+  const disableNext = !useSelector(canSelectNextDay);
 
   useEffect(() => {
     if (selectedDay) {
@@ -53,12 +62,20 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
     });
   };
 
+  const leftCls = classNames('icon', 'day-selector-icon', {
+    disabled: disablePrev,
+  });
+
+  const rightCls = classNames('icon', 'day-selector-icon', {
+    disabled: disableNext,
+  });
+
   return (
     <section className="container day-planner">
       <div className="day-planner-header">
-        <BiCaretLeft className="icon day-selector-icon" />
+        <BiCaretLeft className={leftCls} />
         <span className="day-planner-day">{formatDate(selectedDay.day)}</span>
-        <BiCaretRight className="icon day-selector-icon" />
+        <BiCaretRight className={rightCls} />
       </div>
       <div className="day-planner-meals">
         <DayPlannerInput

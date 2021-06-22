@@ -36,4 +36,24 @@ export const selectSchedule = (state: RootState) => state.schedule.schedule;
 export const selectSelectedDay = (state: RootState) =>
   state.schedule.selectedDay;
 
+export const canSelectPrevDay = (state: RootState) => {
+  const schedule = selectSchedule(state);
+  const selectedDay = selectSelectedDay(state);
+  if (!selectedDay) {
+    return false;
+  }
+  const indexOfSelectedDay = schedule.indexOf(selectedDay);
+  return indexOfSelectedDay > 0;
+};
+
+export const canSelectNextDay = (state: RootState) => {
+  const schedule = selectSchedule(state);
+  const selectedDay = selectSelectedDay(state);
+  if (!selectedDay) {
+    return false;
+  }
+  const indexOfSelectedDay = schedule.indexOf(selectedDay);
+  return indexOfSelectedDay < schedule.length - 1;
+};
+
 export default scheduleSlice.reducer;

@@ -19,6 +19,11 @@
 
 .day-selector-icon {
   font-size: 1.5rem;
+
+  &.disabled {
+    opacity: 0.2;
+    pointer-events: none;
+  }
 }
 
 .day-planner-meals {
