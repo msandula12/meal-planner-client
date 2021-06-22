@@ -1,0 +1,29 @@
+@import 'styles/variables';
+
+.home {
+  align-items: center;
+  background-color: $fgColor;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.home-hero {
+  flex: 2;
+  margin-right: 2rem;
+}
+
+.hero-image {
+  margin-top: 2rem;
+
+  img {
+    box-shadow: 6rem 6rem 6rem rgba(0, 0, 0, 0.4);
+    transform: scale(0.5) skew(-40deg, 20deg);
+    width: 100%;
+  }
+}
+
+.home-form {
+  flex: 1;
+}

@@ -88,7 +88,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
   });
 
   return (
-    <section className="container day-planner">
+    <section className="container form-box day-planner">
       <div className="day-planner-header">
         <BiCaretLeft className={leftCls} onClick={getPrevDay} />
         <span className="day-planner-day">{formatDate(selectedDay.day)}</span>
