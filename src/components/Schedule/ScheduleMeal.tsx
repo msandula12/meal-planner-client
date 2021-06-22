@@ -10,8 +10,6 @@ type Props = {
 };
 
 function ScheduleMeal({ meal, mealType }: Props) {
-  const updateInput = () => {};
-
   const cls = classNames('schedule-meal', {
     [mealType]: meal.length > 0,
     placeholder: !meal.length,
@@ -20,7 +18,6 @@ function ScheduleMeal({ meal, mealType }: Props) {
   return (
     <textarea
       className={cls}
-      onChange={updateInput}
       placeholder="n/a"
       readOnly
       title={meal}
