@@ -1,7 +1,6 @@
 @import 'styles/variables';
 
 .schedule-day {
-  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -14,6 +13,7 @@
 
   &.selected {
     background-color: $primaryColor;
+    box-shadow: 0.25rem 0.5rem 0 darken($bgColor, 10%);
   }
 }
 

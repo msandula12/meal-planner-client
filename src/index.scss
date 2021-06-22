@@ -16,7 +16,6 @@ body {
 
 /* General */
 .btn {
-  border-radius: 0.25rem;
   border: 2px solid darken($accentColor, 10%);
   box-shadow: 0 0.5rem 0 darken($accentColor, 10%);
   font-weight: bold;
@@ -39,7 +38,7 @@ body {
 }
 
 .container {
-  border-radius: 1rem;
+  box-shadow: 0.5rem 0.75rem 0 darken($bgColor, 10%);
   padding: 2rem;
 }
 
@@ -73,8 +72,6 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
   font-size: 1rem;
   padding: 0.75rem 1rem;
   transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
