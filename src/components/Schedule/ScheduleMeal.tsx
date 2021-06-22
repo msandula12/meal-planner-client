@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { MealType } from '../../constants/enums';
 
 import './ScheduleMeal.scss';
@@ -10,9 +12,14 @@ type Props = {
 function ScheduleMeal({ meal, mealType }: Props) {
   const updateInput = () => {};
 
+  const cls = classNames('schedule-meal', {
+    [mealType]: meal.length > 0,
+    placeholder: !meal.length,
+  });
+
   return (
     <textarea
-      className={`schedule-meal ${meal.length > 0 ? mealType : 'placeholder'}`}
+      className={cls}
       onChange={updateInput}
       placeholder="n/a"
       readOnly

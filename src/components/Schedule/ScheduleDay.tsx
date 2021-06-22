@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { MealType } from '../../constants/enums';
 import { Day } from '../../constants/interfaces';
 import { formatDate } from '../../utils/helpers';
@@ -21,11 +23,12 @@ function ScheduleDay({ day, isSelected, setSelectedDay }: Props) {
     }
   };
 
+  const cls = classNames('schedule-day', {
+    selected: isSelected,
+  });
+
   return (
-    <div
-      onClick={handleSelectDay}
-      className={`schedule-day ${isSelected ? 'selected' : ''}`}
-    >
+    <div onClick={handleSelectDay} className={cls}>
       <p
         className={`schedule-day-date ${
           formattedDate === 'Today' ? 'is-today' : ''
