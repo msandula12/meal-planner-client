@@ -5,12 +5,12 @@ import type { RootState } from '../store';
 
 interface ScheduleState {
   schedule: Day[];
-  selectedDay: Day | null;
+  selectedDay: Day | undefined;
 }
 
 const initialState: ScheduleState = {
   schedule: [],
-  selectedDay: null,
+  selectedDay: undefined,
 };
 
 // Slice
@@ -18,16 +18,20 @@ export const scheduleSlice = createSlice({
   name: 'schedule',
   initialState,
   reducers: {
-    changeSelectedDay: (state, action: PayloadAction<Day | null>) => {
+    changeSchedule: (state, action: PayloadAction<Day[]>) => {
+      state.schedule = action.payload;
+    },
+    changeSelectedDay: (state, action: PayloadAction<Day | undefined>) => {
       state.selectedDay = action.payload;
     },
   },
 });
 
 // Actions
-export const { changeSelectedDay } = scheduleSlice.actions;
+export const { changeSchedule, changeSelectedDay } = scheduleSlice.actions;
 
 // Selectors
+export const selectSchedule = (state: RootState) => state.schedule.schedule;
 export const selectSelectedDay = (state: RootState) =>
   state.schedule.selectedDay;
 

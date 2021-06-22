@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Day } from '../../constants/interfaces';
-import { getMockSchedule } from '../../mockData/mockData';
-import { isToday } from '../../utils/helpers';
+import { Day } from 'constants/interfaces';
+import {
+  changeSchedule,
+  changeSelectedDay,
+  selectSchedule,
+  selectSelectedDay,
+} from 'redux/reducers/scheduleSlice';
 
 import DayPlanner from '../DayPlanner/DayPlanner';
 import Header from '../Header/Header';
@@ -11,24 +15,20 @@ import Schedule from '../Schedule/Schedule';
 import './MealPlanner.scss';
 
 function MealPlanner() {
-  const [schedule, setSchedule] = useState<Day[]>([]);
-  const [selectedDay, setSelectedDay] = useState<Day | undefined>(undefined);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const currentSchedule = getMockSchedule();
-    setSchedule(currentSchedule);
-    const today = currentSchedule.find((day) => isToday(day.day));
-    setSelectedDay(today);
-  }, []);
+  const schedule = useSelector(selectSchedule);
+  const selectedDay = useSelector(selectSelectedDay);
 
   const handleSelectedDay = (day: Day) => {
-    setSelectedDay(day);
+    dispatch(changeSelectedDay(day));
   };
 
   const handleUpdateSchedule = (updatedDay: Day) => {
-    setSchedule((prevSchedule) =>
-      prevSchedule.map((day) => (day.day === updatedDay.day ? updatedDay : day))
+    const newSchedule = schedule.map((day) =>
+      day.day === updatedDay.day ? updatedDay : day
     );
+    dispatch(changeSchedule(newSchedule));
   };
 
   return (
