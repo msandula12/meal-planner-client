@@ -29,6 +29,7 @@ function MealPlanner() {
       day.day === updatedDay.day ? updatedDay : day
     );
     dispatch(changeSchedule(newSchedule));
+    dispatch(changeSelectedDay(updatedDay));
   };
 
   return (
