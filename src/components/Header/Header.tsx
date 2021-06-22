@@ -1,16 +1,23 @@
+import { Link } from 'react-router-dom';
 import { BiCog, BiLogIn, BiLogOut } from 'react-icons/bi';
+
+import { Routes } from 'constants/enums';
 
 import './Header.scss';
 
 function Header() {
   const user = {
-    name: 'Mike',
+    name: 'Guest',
   };
 
   return (
     <header>
       <nav className="header-nav">
-        <span className="header-logo">MealPlanner</span>
+        <span className="header-nav-logo">
+          <Link to={Routes.HOME} className="logo">
+            MealPlanner
+          </Link>
+        </span>
         <span className="header-nav-actions">
           {user ? (
             <>

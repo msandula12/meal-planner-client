@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { Routes } from 'constants/enums';
 import { getMockSchedule } from 'mockData/mockData';
 import {
   changeSchedule,
@@ -8,6 +10,7 @@ import {
 } from 'redux/reducers/scheduleSlice';
 import { isToday } from 'utils/helpers';
 
+import Home from 'components/Home/Home';
 import MealPlanner from 'components/MealPlanner/MealPlanner';
 
 function App() {
@@ -21,7 +24,14 @@ function App() {
     dispatch(changeSelectedDay(today));
   }, [dispatch]);
 
-  return <MealPlanner />;
+  return (
+    <Router>
+      <Switch>
+        <Route exact path={Routes.HOME} component={Home} />
+        <Route path={Routes.SCHEDULE} component={MealPlanner} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

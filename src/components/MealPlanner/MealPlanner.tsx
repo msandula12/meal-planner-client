@@ -33,18 +33,20 @@ function MealPlanner() {
   };
 
   return (
-    <div className="container meal-planner">
-      <Header />
-      <div className="meal-planner-dashboard">
-        <Schedule
-          schedule={schedule}
-          selectedDay={selectedDay}
-          setSelectedDay={handleSelectedDay}
-        />
-        <DayPlanner
-          selectedDay={selectedDay}
-          updateSchedule={handleUpdateSchedule}
-        />
+    <div className="wrapper">
+      <div className="container meal-planner">
+        <Header />
+        <div className="meal-planner-dashboard">
+          <Schedule
+            schedule={schedule}
+            selectedDay={selectedDay}
+            setSelectedDay={handleSelectedDay}
+          />
+          <DayPlanner
+            selectedDay={selectedDay}
+            updateSchedule={handleUpdateSchedule}
+          />
+        </div>
       </div>
     </div>
   );

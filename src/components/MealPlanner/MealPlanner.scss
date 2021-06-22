@@ -1,5 +1,11 @@
 @import 'styles/variables';
 
+.wrapper {
+  background-color: $bgColor;
+  min-height: 100vh;
+  padding: 2rem 4rem 2rem 2rem;
+}
+
 .meal-planner {
   background-color: $fgColor;
   display: flex;

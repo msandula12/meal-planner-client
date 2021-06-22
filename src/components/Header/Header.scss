@@ -6,12 +6,16 @@
   margin-bottom: 1rem;
 }
 
-.header-logo {
-  color: $accentColor;
+.header-nav-logo {
   flex: 1;
-  font-family: $accentFont;
-  font-size: 2rem;
-  font-weight: bold;
+
+  .logo {
+    color: $accentColor;
+    font-family: $accentFont;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
 
 .header-nav-actions {

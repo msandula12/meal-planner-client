@@ -3,3 +3,8 @@ export enum MealType {
   LUNCH = 'lunch',
   DINNER = 'dinner',
 }
+
+export enum Routes {
+  HOME = '/',
+  SCHEDULE = '/schedule',
+}
