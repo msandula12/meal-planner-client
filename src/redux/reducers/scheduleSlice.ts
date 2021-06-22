@@ -11,7 +11,7 @@ interface ScheduleState {
 const initialState: ScheduleState = {
   schedule: [],
   selectedDay: null,
-}
+};
 
 // Slice
 export const scheduleSlice = createSlice({
@@ -28,6 +28,7 @@ export const scheduleSlice = createSlice({
 export const { changeSelectedDay } = scheduleSlice.actions;
 
 // Selectors
-export const selectSelectedDay = (state: RootState) => state.schedule.selectedDay;
+export const selectSelectedDay = (state: RootState) =>
+  state.schedule.selectedDay;
 
 export default scheduleSlice.reducer;
