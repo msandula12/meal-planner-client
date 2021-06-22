@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent } from 'react';
 
-import { MealType } from '../../constants/enums';
+import { MealType } from 'constants/enums';
 
 type Props = {
   handleUpdate: (value: string) => void;

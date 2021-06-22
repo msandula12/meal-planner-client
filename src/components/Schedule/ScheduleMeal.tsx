@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { MealType } from '../../constants/enums';
+import { MealType } from 'constants/enums';
 
 import './ScheduleMeal.scss';
 

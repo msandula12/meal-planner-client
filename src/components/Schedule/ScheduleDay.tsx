@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import { MealType } from '../../constants/enums';
-import { Day } from '../../constants/interfaces';
-import { formatDate } from '../../utils/helpers';
+import { MealType } from 'constants/enums';
+import { Day } from 'constants/interfaces';
+import { formatDate } from 'utils/helpers';
 
 import ScheduleMeal from './ScheduleMeal';
 

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Day } from 'constants/interfaces';
+
 import type { RootState } from '../store';
 
 interface ScheduleState {

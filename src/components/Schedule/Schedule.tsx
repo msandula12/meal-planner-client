@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { Day } from '../../constants/interfaces';
+import { Day } from 'constants/interfaces';
 
 import ScheduleDay from './ScheduleDay';
 

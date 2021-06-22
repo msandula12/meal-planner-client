@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 
-import { MealType } from '../../constants/enums';
-import { Day } from '../../constants/interfaces';
-import { formatDate } from '../../utils/helpers';
+import { MealType } from 'constants/enums';
+import { Day } from 'constants/interfaces';
+import { formatDate } from 'utils/helpers';
 
 import DayPlannerInput from './DayPlannerInput';
 
