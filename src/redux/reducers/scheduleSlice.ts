@@ -36,6 +36,7 @@ export const selectSchedule = (state: RootState) => state.schedule.schedule;
 export const selectSelectedDay = (state: RootState) =>
   state.schedule.selectedDay;
 
+// Helpers
 export const canSelectPrevDay = (state: RootState) => {
   const schedule = selectSchedule(state);
   const selectedDay = selectSelectedDay(state);
