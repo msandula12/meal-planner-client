@@ -1,10 +1,13 @@
 import { BaseSyntheticEvent, useState } from 'react';
+import { BiHide, BiShow } from 'react-icons/bi';
 
 type Props = {
   toggleForm: () => void;
 };
 
 function LogIn({ toggleForm }: Props) {
+  const [showPassword, setShowPassword] = useState(false);
+
   const [errors, setErrors] = useState({
     email: '',
     password: '',
@@ -14,6 +17,10 @@ function LogIn({ toggleForm }: Props) {
     email: '',
     password: '',
   });
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const updateValue = ({ target }: BaseSyntheticEvent) => {
     setValues((prevValues) => ({
@@ -63,15 +70,20 @@ function LogIn({ toggleForm }: Props) {
           <label className="input-label" htmlFor="password">
             Password
           </label>
-          <input
-            className="text-input"
-            id="password"
-            name="password"
-            onChange={updateValue}
-            placeholder="Password"
-            type="password"
-            value={values.password}
-          />
+          <div className="input-with-icon">
+            <input
+              className="text-input"
+              id="password"
+              name="password"
+              onChange={updateValue}
+              placeholder="Password"
+              type={showPassword ? 'text' : 'password'}
+              value={values.password}
+            />
+            <span className="input-icon" onClick={toggleShowPassword}>
+              {showPassword ? <BiHide /> : <BiShow />}
+            </span>
+          </div>
           {errors.password && (
             <div className="error-msg">{errors.password}</div>
           )}

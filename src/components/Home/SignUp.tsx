@@ -1,4 +1,5 @@
 import { BaseSyntheticEvent, useState } from 'react';
+import { BiHide, BiShow } from 'react-icons/bi';
 
 import { isValidEmail } from 'utils/helpers';
 
@@ -9,6 +10,9 @@ type Props = {
 };
 
 function SignUp({ toggleForm }: Props) {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [errors, setErrors] = useState({
     email: '',
     password: '',
@@ -20,6 +24,16 @@ function SignUp({ toggleForm }: Props) {
     password: '',
     confirmPassword: '',
   });
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(
+      (prevShowConfirmPassword) => !prevShowConfirmPassword
+    );
+  };
 
   const updateValue = ({ target }: BaseSyntheticEvent) => {
     setValues((prevValues) => ({
@@ -80,15 +94,20 @@ function SignUp({ toggleForm }: Props) {
           <label className="input-label" htmlFor="password">
             Password
           </label>
-          <input
-            className="text-input"
-            id="password"
-            name="password"
-            onChange={updateValue}
-            placeholder={`Must be at least ${MIN_PASSWORD_LENGTH} characters`}
-            type="password"
-            value={values.password}
-          />
+          <div className="input-with-icon">
+            <input
+              className="text-input"
+              id="password"
+              name="password"
+              onChange={updateValue}
+              placeholder={`Must be at least ${MIN_PASSWORD_LENGTH} characters`}
+              type={showPassword ? 'text' : 'password'}
+              value={values.password}
+            />
+            <span className="input-icon" onClick={toggleShowPassword}>
+              {showPassword ? <BiHide /> : <BiShow />}
+            </span>
+          </div>
           {errors.password && (
             <div className="error-msg">{errors.password}</div>
           )}
@@ -97,15 +116,20 @@ function SignUp({ toggleForm }: Props) {
           <label className="input-label" htmlFor="confirmPassword">
             Confirm Password
           </label>
-          <input
-            className="text-input"
-            id="confirmPassword"
-            name="confirmPassword"
-            onChange={updateValue}
-            placeholder="Passwords must match"
-            type="password"
-            value={values.confirmPassword}
-          />
+          <div className="input-with-icon">
+            <input
+              className="text-input"
+              id="confirmPassword"
+              name="confirmPassword"
+              onChange={updateValue}
+              placeholder="Passwords must match"
+              type={showConfirmPassword ? 'text' : 'password'}
+              value={values.confirmPassword}
+            />
+            <span className="input-icon" onClick={toggleShowConfirmPassword}>
+              {showConfirmPassword ? <BiHide /> : <BiShow />}
+            </span>
+          </div>
           {errors.confirmPassword && (
             <div className="error-msg">{errors.confirmPassword}</div>
           )}
