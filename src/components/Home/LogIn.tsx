@@ -81,7 +81,11 @@ function LogIn({ toggleForm }: Props) {
               type={showPassword ? 'text' : 'password'}
               value={values.password}
             />
-            <span className="input-icon" onClick={toggleShowPassword}>
+            <span
+              className="input-icon"
+              onClick={toggleShowPassword}
+              title={`${showPassword ? 'Hide' : 'Show'} password`}
+            >
               {showPassword ? <BiHide /> : <BiShow />}
             </span>
           </div>

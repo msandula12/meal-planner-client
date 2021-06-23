@@ -105,7 +105,11 @@ function SignUp({ toggleForm }: Props) {
               type={showPassword ? 'text' : 'password'}
               value={values.password}
             />
-            <span className="input-icon" onClick={toggleShowPassword}>
+            <span
+              className="input-icon"
+              onClick={toggleShowPassword}
+              title={`${showPassword ? 'Hide' : 'Show'} password`}
+            >
               {showPassword ? <BiHide /> : <BiShow />}
             </span>
           </div>
@@ -127,7 +131,11 @@ function SignUp({ toggleForm }: Props) {
               type={showConfirmPassword ? 'text' : 'password'}
               value={values.confirmPassword}
             />
-            <span className="input-icon" onClick={toggleShowConfirmPassword}>
+            <span
+              className="input-icon"
+              onClick={toggleShowConfirmPassword}
+              title={`${showConfirmPassword ? 'Hide' : 'Show'} password`}
+            >
               {showConfirmPassword ? <BiHide /> : <BiShow />}
             </span>
           </div>
