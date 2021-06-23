@@ -112,8 +112,8 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
         />
       </div>
       <button
-        disabled={!canSaveMeals}
         className="btn btn-primary"
+        disabled={!canSaveMeals}
         onClick={saveMeals}
       >
         Save
