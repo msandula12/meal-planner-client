@@ -6,7 +6,7 @@ function SignUp({ toggle }: Props) {
   const updateInput = () => {};
 
   return (
-    <div className="container form-box">
+    <div className="container form-box hoist">
       <h2 className="form-box-header">Sign Up</h2>
       <div className="input-group">
         <label className="input-label" htmlFor="email">

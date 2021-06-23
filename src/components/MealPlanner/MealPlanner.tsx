@@ -33,8 +33,8 @@ function MealPlanner() {
   };
 
   return (
-    <div className="wrapper">
-      <div className="container meal-planner">
+    <div className="meal-planner-wrapper">
+      <div className="container meal-planner hoist">
         <Header />
         <div className="meal-planner-dashboard">
           <Schedule

@@ -67,6 +67,10 @@ body {
   }
 }
 
+.hoist {
+  animation: hoistIntoPlace 1s ease-in-out forwards;
+}
+
 .icon {
   opacity: 0.4;
 
@@ -122,5 +126,20 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     border-color: darken($primaryColor, 10%);
     outline: none;
+  }
+}
+
+@keyframes hoistIntoPlace {
+  0% {
+    opacity: 0.1;
+    transform: perspective(50vw) rotateX(45deg);
+  }
+  80% {
+    opacity: 0.5;
+    transform: perspective(100vw) rotateX(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(0) rotateX(0);
   }
 }
