@@ -98,7 +98,7 @@ function LogIn({ toggleForm }: Props) {
         className="btn btn-primary"
         disabled={!canLogIn}
         type="submit"
-        value="Log In"
+        value="Log in to your account"
       />
       <p className="form-box-footer">
         Don't have an account?{' '}

@@ -148,7 +148,7 @@ function SignUp({ toggleForm }: Props) {
         className="btn btn-primary"
         disabled={!canSignUp}
         type="submit"
-        value="Sign Up"
+        value="Create a new account"
       />
       <p className="form-box-footer">
         Already have an account?{' '}
