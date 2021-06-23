@@ -49,7 +49,8 @@ function SignUp({ toggleForm }: Props) {
 
   const canSignUp = Object.values(values).every((value) => Boolean(value));
 
-  const signUp = () => {
+  const signUp = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
     const currentErrors = {
       email: !isValidEmail(values.email)
         ? 'Please enter a valid email address.'
@@ -72,7 +73,7 @@ function SignUp({ toggleForm }: Props) {
   };
 
   return (
-    <div className="container form-box hoist">
+    <form className="container form-box hoist" onSubmit={signUp}>
       <h2 className="form-box-header">Sign Up</h2>
       <div className="form-box-inputs">
         <div className="input-group">
@@ -135,20 +136,19 @@ function SignUp({ toggleForm }: Props) {
           )}
         </div>
       </div>
-      <button
+      <input
         className="btn btn-primary"
         disabled={!canSignUp}
-        onClick={signUp}
-      >
-        Sign Up
-      </button>
+        type="submit"
+        value="Sign Up"
+      />
       <p className="form-box-footer">
         Already have an account?{' '}
         <span className="accent-text" onClick={toggleForm}>
           Log in!
         </span>
       </p>
-    </div>
+    </form>
   );
 }
 

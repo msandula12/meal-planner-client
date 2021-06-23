@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 import classNames from 'classnames';
@@ -56,7 +56,8 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
     return <section className="container day-planner">No day selected</section>;
   }
 
-  const saveMeals = () => {
+  const saveMeals = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
     updateSchedule({
       ...selectedDay,
       meals: {
@@ -88,7 +89,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
   });
 
   return (
-    <section className="container form-box day-planner">
+    <form className="container form-box day-planner" onSubmit={saveMeals}>
       <div className="day-planner-header">
         <BiCaretLeft className={leftCls} onClick={getPrevDay} />
         <span className="day-planner-day">{formatDate(selectedDay.day)}</span>
@@ -111,14 +112,14 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
           mealType={MealType.DINNER}
         />
       </div>
-      <button
+      <input
         className="btn btn-primary"
         disabled={!canSaveMeals}
         onClick={saveMeals}
-      >
-        Save
-      </button>
-    </section>
+        type="submit"
+        value="Save"
+      />
+    </form>
   );
 }
 

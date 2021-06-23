@@ -29,7 +29,8 @@ function LogIn({ toggleForm }: Props) {
     }));
   };
 
-  const logIn = () => {
+  const logIn = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
     const currentErrors = {
       email: '',
       password: '',
@@ -48,7 +49,7 @@ function LogIn({ toggleForm }: Props) {
   const canLogIn = Object.values(values).every((value) => Boolean(value));
 
   return (
-    <div className="container form-box hoist">
+    <form className="container form-box hoist" onSubmit={logIn}>
       <h2 className="form-box-header">Log In</h2>
       <div className="form-box-inputs">
         <div className="input-group">
@@ -89,16 +90,19 @@ function LogIn({ toggleForm }: Props) {
           )}
         </div>
       </div>
-      <button className="btn btn-primary" disabled={!canLogIn} onClick={logIn}>
-        Log In
-      </button>
+      <input
+        className="btn btn-primary"
+        disabled={!canLogIn}
+        type="submit"
+        value="Log In"
+      />
       <p className="form-box-footer">
         Don't have an account?{' '}
         <span className="accent-text" onClick={toggleForm}>
           Sign up!
         </span>
       </p>
-    </div>
+    </form>
   );
 }
 
