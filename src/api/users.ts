@@ -3,30 +3,33 @@ import axios from 'axios';
 import { ApiRoutes, BASE_URL } from './index';
 
 export function signIn({
-  email,
   password,
+  email,
 }: {
-  email: string;
   password: string;
+  email: string;
 }) {
   return axios.post(`${BASE_URL}/${ApiRoutes.USERS}/signin`, {
-    email,
     password,
+    email,
   });
 }
 
 export function signUp({
-  confirmPassword,
+  name,
   email,
   password,
+  confirmPassword,
 }: {
-  confirmPassword: string;
+  name: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }) {
   return axios.post(`${BASE_URL}/${ApiRoutes.USERS}/signup`, {
-    confirmPassword,
+    name,
     email,
     password,
+    confirmPassword,
   });
 }

@@ -20,12 +20,14 @@ function SignUp({ toggleForm }: Props) {
 
   const [errors, setErrors] = useState({
     email: '',
+    name: '',
     password: '',
     confirmPassword: '',
   });
 
   const [values, setValues] = useState({
     email: '',
+    name: '',
     password: '',
     confirmPassword: '',
   });
@@ -60,6 +62,7 @@ function SignUp({ toggleForm }: Props) {
       email: !isValidEmail(values.email)
         ? 'Please enter a valid email address.'
         : '',
+      name: '',
       password:
         values.password.length < MIN_PASSWORD_LENGTH
           ? `Password must be at least ${MIN_PASSWORD_LENGTH} characters.`
@@ -88,6 +91,21 @@ function SignUp({ toggleForm }: Props) {
     <form className="container form-box hoist" onSubmit={handleSignUp}>
       <h2 className="form-box-header">Sign Up</h2>
       <div className="form-box-inputs">
+        <div className="input-group">
+          <label className="input-label" htmlFor="name">
+            Your name
+          </label>
+          <input
+            className="text-input"
+            id="name"
+            name="name"
+            onChange={updateValue}
+            placeholder="Jane Doe"
+            type="text"
+            value={values.name}
+          />
+          {errors.name && <div className="error-msg">{errors.name}</div>}
+        </div>
         <div className="input-group">
           <label className="input-label" htmlFor="email">
             Email
