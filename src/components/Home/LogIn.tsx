@@ -1,13 +1,17 @@
 import { BaseSyntheticEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import { signIn } from 'api/users';
+import { Routes } from 'constants/enums';
 
 type Props = {
   toggleForm: () => void;
 };
 
 function LogIn({ toggleForm }: Props) {
+  const history = useHistory();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [errors, setErrors] = useState({
@@ -47,7 +51,8 @@ function LogIn({ toggleForm }: Props) {
 
     await signIn(values)
       .then((res) => {
-        console.log('signIn -> res: ', res);
+        console.log('signIn: ', res);
+        history.push(Routes.SCHEDULE);
       })
       .catch((error) => {
         setErrors(error.response.data);

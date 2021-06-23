@@ -1,7 +1,9 @@
 import { BaseSyntheticEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import { signUp } from 'api/users';
+import { Routes } from 'constants/enums';
 import { isValidEmail } from 'utils/helpers';
 
 const MIN_PASSWORD_LENGTH = 6;
@@ -11,6 +13,8 @@ type Props = {
 };
 
 function SignUp({ toggleForm }: Props) {
+  const history = useHistory();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -72,7 +76,8 @@ function SignUp({ toggleForm }: Props) {
 
     await signUp(values)
       .then((res) => {
-        console.log('signUp -> res: ', res);
+        console.log('signUp: ', res);
+        history.push(Routes.SCHEDULE);
       })
       .catch((error) => {
         setErrors(error.response.data);
