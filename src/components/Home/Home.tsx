@@ -33,9 +33,9 @@ function Home() {
         </div>
         <div className="home-form">
           {isSigningUp ? (
-            <SignUp toggle={toggleIsSigningUp} />
+            <SignUp toggleForm={toggleIsSigningUp} />
           ) : (
-            <LogIn toggle={toggleIsSigningUp} />
+            <LogIn toggleForm={toggleIsSigningUp} />
           )}
         </div>
       </main>

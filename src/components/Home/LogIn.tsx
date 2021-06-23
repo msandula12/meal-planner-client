@@ -1,10 +1,10 @@
 import { BaseSyntheticEvent, useState } from 'react';
 
 type Props = {
-  toggle: () => void;
+  toggleForm: () => void;
 };
 
-function LogIn({ toggle }: Props) {
+function LogIn({ toggleForm }: Props) {
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -61,7 +61,7 @@ function LogIn({ toggle }: Props) {
       </button>
       <p className="form-box-footer">
         Don't have an account?{' '}
-        <span className="accent-text" onClick={toggle}>
+        <span className="accent-text" onClick={toggleForm}>
           Sign up!
         </span>
       </p>
