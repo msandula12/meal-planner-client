@@ -34,9 +34,9 @@ function MealPlanner() {
 
   return (
     <div className="meal-planner-wrapper">
-      <div className="container meal-planner hoist">
+      <main className="container meal-planner hoist">
         <Header />
-        <div className="meal-planner-dashboard">
+        <section className="meal-planner-dashboard">
           <Schedule
             schedule={schedule}
             selectedDay={selectedDay}
@@ -46,8 +46,8 @@ function MealPlanner() {
             selectedDay={selectedDay}
             updateSchedule={handleUpdateSchedule}
           />
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 }

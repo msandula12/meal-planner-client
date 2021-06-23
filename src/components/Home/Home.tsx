@@ -20,7 +20,7 @@ function Home() {
   return (
     <div className="home">
       <main className="home-above-the-fold">
-        <div className="home-hero">
+        <section className="home-hero">
           <div>
             <Link to={Routes.HOME} className="logo big">
               MealPlanner
@@ -30,14 +30,14 @@ function Home() {
           <div className="hero-image">
             <img src={DashboardImage} alt="MealPlanner Dashboard" />
           </div>
-        </div>
-        <div className="home-form">
+        </section>
+        <section className="home-form">
           {isSigningUp ? (
             <SignUp toggleForm={toggleIsSigningUp} />
           ) : (
             <LogIn toggleForm={toggleIsSigningUp} />
           )}
-        </div>
+        </section>
       </main>
       <footer className="home-footer">
         Copyright &copy;{dayjs().year()} Mike Sandula
