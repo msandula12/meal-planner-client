@@ -1,12 +1,18 @@
 @import 'styles/variables';
 
 .home {
-  align-items: center;
   background-color: $fgColor;
+  padding: 2rem 4rem;
+  min-height: 100vh;
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+}
+
+.home-above-the-fold {
+  align-items: center;
+  display: flex;
+  flex: 1;
   justify-content: center;
-  padding: 4rem;
 }
 
 .home-hero {
@@ -20,10 +26,17 @@
   img {
     box-shadow: 6rem 6rem 6rem rgba(0, 0, 0, 0.4);
     transform: scale(0.5) skew(-40deg, 20deg);
+    transform-origin: center center;
     width: 100%;
   }
 }
 
 .home-form {
   flex: 1;
+}
+
+.home-footer {
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  text-align: center;
 }
