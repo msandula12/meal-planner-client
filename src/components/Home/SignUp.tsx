@@ -1,10 +1,20 @@
 import { BaseSyntheticEvent, useState } from 'react';
 
+import { isValidEmail } from 'utils/helpers';
+
+const MIN_PASSWORD_LENGTH = 6;
+
 type Props = {
   toggleForm: () => void;
 };
 
 function SignUp({ toggleForm }: Props) {
+  const [errors, setErrors] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -18,11 +28,34 @@ function SignUp({ toggleForm }: Props) {
     }));
   };
 
-  const signUp = () => {
-    console.log(values);
-  };
+  const doPasswordsMatch =
+    values.password.length >= MIN_PASSWORD_LENGTH &&
+    values.confirmPassword.length >= MIN_PASSWORD_LENGTH &&
+    values.password === values.confirmPassword;
 
   const canSignUp = Object.values(values).every((value) => Boolean(value));
+
+  const signUp = () => {
+    const currentErrors = {
+      email: !isValidEmail(values.email)
+        ? 'Please enter a valid email address.'
+        : '',
+      password:
+        values.password.length < MIN_PASSWORD_LENGTH
+          ? `Password must be at least ${MIN_PASSWORD_LENGTH} characters.`
+          : '',
+      confirmPassword: !doPasswordsMatch ? 'Passwords must match.' : '',
+    };
+
+    setErrors(currentErrors);
+
+    // If there are errors, don't submit
+    if (Object.values(currentErrors).some((value) => Boolean(value))) {
+      return;
+    }
+
+    console.log(values);
+  };
 
   return (
     <div className="container form-box hoist">
@@ -41,6 +74,7 @@ function SignUp({ toggleForm }: Props) {
             type="text"
             value={values.email}
           />
+          {errors.email && <div className="error-msg">{errors.email}</div>}
         </div>
         <div className="input-group">
           <label className="input-label" htmlFor="password">
@@ -51,10 +85,13 @@ function SignUp({ toggleForm }: Props) {
             id="password"
             name="password"
             onChange={updateValue}
-            placeholder="Must be at least 6 characters"
+            placeholder={`Must be at least ${MIN_PASSWORD_LENGTH} characters`}
             type="password"
             value={values.password}
           />
+          {errors.password && (
+            <div className="error-msg">{errors.password}</div>
+          )}
         </div>
         <div className="input-group">
           <label className="input-label" htmlFor="confirmPassword">
@@ -69,6 +106,9 @@ function SignUp({ toggleForm }: Props) {
             type="password"
             value={values.confirmPassword}
           />
+          {errors.confirmPassword && (
+            <div className="error-msg">{errors.confirmPassword}</div>
+          )}
         </div>
       </div>
       <button

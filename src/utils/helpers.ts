@@ -5,3 +5,6 @@ export const formatDate = (date: string) => {
 };
 
 export const isToday = (date: string) => dayjs().isSame(date, 'day');
+
+export const isValidEmail = (email: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

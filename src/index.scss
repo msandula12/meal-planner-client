@@ -84,8 +84,17 @@ body {
   }
 }
 
-.input-group:not(:last-of-type) {
-  margin-bottom: 1rem;
+.input-group {
+  padding-bottom: 1.75rem;
+  position: relative;
+
+  .error-msg {
+    bottom: 0.5rem;
+    color: $accentColor;
+    font-size: 0.8rem;
+    left: 0;
+    position: absolute;
+  }
 }
 
 .input-label {

@@ -5,6 +5,11 @@ type Props = {
 };
 
 function LogIn({ toggleForm }: Props) {
+  const [errors, setErrors] = useState({
+    email: '',
+    password: '',
+  });
+
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -18,6 +23,18 @@ function LogIn({ toggleForm }: Props) {
   };
 
   const logIn = () => {
+    const currentErrors = {
+      email: '',
+      password: '',
+    };
+
+    setErrors(currentErrors);
+
+    // If there are errors, don't submit
+    if (Object.values(currentErrors).some((value) => Boolean(value))) {
+      return;
+    }
+
     console.log(values);
   };
 
@@ -40,6 +57,7 @@ function LogIn({ toggleForm }: Props) {
             type="text"
             value={values.email}
           />
+          {errors.email && <div className="error-msg">{errors.email}</div>}
         </div>
         <div className="input-group">
           <label className="input-label" htmlFor="password">
@@ -54,6 +72,9 @@ function LogIn({ toggleForm }: Props) {
             type="password"
             value={values.password}
           />
+          {errors.password && (
+            <div className="error-msg">{errors.password}</div>
+          )}
         </div>
       </div>
       <button className="btn btn-primary" disabled={!canLogIn} onClick={logIn}>
