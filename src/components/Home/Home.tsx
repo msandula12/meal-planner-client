@@ -26,7 +26,7 @@ function Home() {
               MealPlanner
             </Link>
           </div>
-          <p>Your own personal meal calendar. No dry erase markers required.</p>
+          <p>Your own personal menu board. No dry erase markers needed.</p>
           <div className="hero-image">
             <img src={DashboardImage} alt="MealPlanner Dashboard" />
           </div>
