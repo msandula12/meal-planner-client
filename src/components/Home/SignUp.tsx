@@ -1,9 +1,11 @@
 import { BaseSyntheticEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import { signUp } from 'api/users';
 import { Routes } from 'constants/enums';
+import { changeUser } from 'redux/reducers/userSlice';
 import { isValidEmail } from 'utils/helpers';
 
 const MIN_PASSWORD_LENGTH = 6;
@@ -13,6 +15,7 @@ type Props = {
 };
 
 function SignUp({ toggleForm }: Props) {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -78,7 +81,9 @@ function SignUp({ toggleForm }: Props) {
     }
 
     await signUp(values)
-      .then(() => {
+      .then((res) => {
+        const userName = res.data.result.name;
+        dispatch(changeUser(userName));
         history.push(Routes.SCHEDULE);
       })
       .catch((error) => {

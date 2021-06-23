@@ -1,15 +1,18 @@
 import { BaseSyntheticEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import { signIn } from 'api/users';
 import { Routes } from 'constants/enums';
+import { changeUser } from 'redux/reducers/userSlice';
 
 type Props = {
   toggleForm: () => void;
 };
 
 function LogIn({ toggleForm }: Props) {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +53,9 @@ function LogIn({ toggleForm }: Props) {
     }
 
     await signIn(values)
-      .then(() => {
+      .then((res) => {
+        const userName = res.data.result.name;
+        dispatch(changeUser(userName));
         history.push(Routes.SCHEDULE);
       })
       .catch((error) => {

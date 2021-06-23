@@ -1,14 +1,14 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BiCog, BiLogIn, BiLogOut } from 'react-icons/bi';
 
 import { Routes } from 'constants/enums';
+import { selectCurrentUser } from 'redux/reducers/userSlice';
 
 import './Header.scss';
 
 function Header() {
-  const user = {
-    name: 'Guest',
-  };
+  const userName = useSelector(selectCurrentUser);
 
   return (
     <header>
@@ -19,9 +19,9 @@ function Header() {
           </Link>
         </span>
         <span className="header-nav-actions">
-          {user ? (
+          {userName ? (
             <>
-              <span>Welcome, {user.name}!</span>
+              <span>Welcome, {userName}!</span>
               <BiCog className="icon" title="Settings" />
               <BiLogOut className="icon" title="Logout" />
             </>

@@ -57,4 +57,5 @@ export const canSelectNextDay = (state: RootState) => {
   return indexOfSelectedDay < schedule.length - 1;
 };
 
+// Export reducer
 export default scheduleSlice.reducer;
