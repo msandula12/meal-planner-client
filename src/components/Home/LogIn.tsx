@@ -50,8 +50,7 @@ function LogIn({ toggleForm }: Props) {
     }
 
     await signIn(values)
-      .then((res) => {
-        console.log('signIn: ', res);
+      .then(() => {
         history.push(Routes.SCHEDULE);
       })
       .catch((error) => {

@@ -78,8 +78,7 @@ function SignUp({ toggleForm }: Props) {
     }
 
     await signUp(values)
-      .then((res) => {
-        console.log('signUp: ', res);
+      .then(() => {
         history.push(Routes.SCHEDULE);
       })
       .catch((error) => {
