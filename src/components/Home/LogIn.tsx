@@ -1,6 +1,8 @@
 import { BaseSyntheticEvent, useState } from 'react';
 import { BiHide, BiShow } from 'react-icons/bi';
 
+import { signIn } from 'api/users';
+
 type Props = {
   toggleForm: () => void;
 };
@@ -29,7 +31,7 @@ function LogIn({ toggleForm }: Props) {
     }));
   };
 
-  const logIn = (event: BaseSyntheticEvent) => {
+  const handleLogIn = async (event: BaseSyntheticEvent) => {
     event.preventDefault();
     const currentErrors = {
       email: '',
@@ -43,13 +45,19 @@ function LogIn({ toggleForm }: Props) {
       return;
     }
 
-    console.log(values);
+    await signIn(values)
+      .then((res) => {
+        console.log('signIn -> res: ', res);
+      })
+      .catch((error) => {
+        setErrors(error.response.data);
+      });
   };
 
   const canLogIn = Object.values(values).every((value) => Boolean(value));
 
   return (
-    <form className="container form-box hoist" onSubmit={logIn}>
+    <form className="container form-box hoist" onSubmit={handleLogIn}>
       <h2 className="form-box-header">Log In</h2>
       <div className="form-box-inputs">
         <div className="input-group">

@@ -1,6 +1,7 @@
 import { BaseSyntheticEvent, useState } from 'react';
 import { BiHide, BiShow } from 'react-icons/bi';
 
+import { signUp } from 'api/users';
 import { isValidEmail } from 'utils/helpers';
 
 const MIN_PASSWORD_LENGTH = 6;
@@ -49,7 +50,7 @@ function SignUp({ toggleForm }: Props) {
 
   const canSignUp = Object.values(values).every((value) => Boolean(value));
 
-  const signUp = (event: BaseSyntheticEvent) => {
+  const handleSignUp = async (event: BaseSyntheticEvent) => {
     event.preventDefault();
     const currentErrors = {
       email: !isValidEmail(values.email)
@@ -69,11 +70,17 @@ function SignUp({ toggleForm }: Props) {
       return;
     }
 
-    console.log(values);
+    await signUp(values)
+      .then((res) => {
+        console.log('signUp -> res: ', res);
+      })
+      .catch((error) => {
+        setErrors(error.response.data);
+      });
   };
 
   return (
-    <form className="container form-box hoist" onSubmit={signUp}>
+    <form className="container form-box hoist" onSubmit={handleSignUp}>
       <h2 className="form-box-header">Sign Up</h2>
       <div className="form-box-inputs">
         <div className="input-group">
