@@ -17,6 +17,11 @@ body {
   min-height: 100vh;
 }
 
+button,
+input {
+  font-size: 1rem;
+}
+
 /* General */
 .accent-text {
   color: $accentColor;
