@@ -6,5 +6,6 @@ export enum MealType {
 
 export enum Routes {
   HOME = '/',
+  NOT_FOUND = '*',
   SCHEDULE = '/schedule',
 }
