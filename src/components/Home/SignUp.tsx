@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
@@ -17,6 +17,14 @@ type Props = {
 function SignUp({ toggleForm }: Props) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // Focus first input field on init
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -107,6 +115,7 @@ function SignUp({ toggleForm }: Props) {
             name="name"
             onChange={updateValue}
             placeholder="Jane Doe"
+            ref={inputRef}
             type="text"
             value={values.name}
           />

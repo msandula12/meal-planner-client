@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
 
 import { deleteUserToken } from 'api/users';
@@ -8,9 +8,14 @@ import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
 import './Header.scss';
 
-function Header() {
+type Props = {
+  showLoginForm?: () => void;
+};
+
+function Header({ showLoginForm }: Props) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const user = useSelector(selectCurrentUser);
 
   const logOut = () => {
@@ -23,21 +28,29 @@ function Header() {
     <header>
       <nav className="header-nav">
         <span className="header-nav-logo">
-          <Link to={Routes.HOME} className="logo">
-            MealPlanner
-          </Link>
+          {location.pathname !== Routes.HOME && (
+            <Link to={Routes.HOME} className="logo">
+              MealPlanner
+            </Link>
+          )}
         </span>
         <span className="header-nav-actions">
           {user ? (
             <>
-              <span>Welcome, {user.name}!</span>
+              <span>
+                Welcome,{' '}
+                <Link className="accent-text" to={Routes.SCHEDULE}>
+                  {user.name}
+                </Link>
+                !
+              </span>
               {/* <BiCog className="icon" title="Settings" /> */}
               <BiLogOut className="icon" onClick={logOut} title="Logout" />
             </>
           ) : (
             <>
               <span>Please log in</span>
-              <BiLogIn className="icon" title="Login" />
+              <BiLogIn className="icon" onClick={showLoginForm} title="Login" />
             </>
           )}
         </span>

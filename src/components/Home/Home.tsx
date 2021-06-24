@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import DashboardImage from 'assets/images/dashboard.png';
 import { Routes } from 'constants/enums';
 
+import Header from '../Header/Header';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 
@@ -17,8 +18,13 @@ function Home() {
     setIsSigningUp((prevIsSigningup) => !prevIsSigningup);
   };
 
+  const showLoginForm = () => {
+    setIsSigningUp(false);
+  };
+
   return (
     <div className="home">
+      <Header showLoginForm={showLoginForm} />
       <main className="home-above-the-fold">
         <section className="home-hero">
           <div>
