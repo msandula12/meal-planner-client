@@ -47,7 +47,7 @@ export function deleteUserToken() {
 }
 
 export function getUserToken() {
-  return localStorage.getItem('token');
+  return localStorage.getItem('token') || '';
 }
 
 export function saveUserToken(token: string) {

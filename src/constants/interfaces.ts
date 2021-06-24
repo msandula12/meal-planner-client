@@ -9,6 +9,10 @@ export type Meal = {
   [key in MealType]: string;
 };
 
+export interface Token {
+  exp: number;
+}
+
 export interface User {
   id: string;
   name: string;
