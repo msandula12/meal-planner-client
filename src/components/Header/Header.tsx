@@ -1,14 +1,23 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { BiCog, BiLogIn, BiLogOut } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { BiLogIn, BiLogOut } from 'react-icons/bi';
 
+import { deleteUserToken } from 'api/users';
 import { Routes } from 'constants/enums';
-import { selectCurrentUser } from 'redux/reducers/userSlice';
+import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
 import './Header.scss';
 
 function Header() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(selectCurrentUser);
+
+  const logOut = () => {
+    dispatch(changeUser(null));
+    deleteUserToken();
+    history.push(Routes.HOME);
+  };
 
   return (
     <header>
@@ -22,8 +31,8 @@ function Header() {
           {user ? (
             <>
               <span>Welcome, {user.name}!</span>
-              <BiCog className="icon" title="Settings" />
-              <BiLogOut className="icon" title="Logout" />
+              {/* <BiCog className="icon" title="Settings" /> */}
+              <BiLogOut className="icon" onClick={logOut} title="Logout" />
             </>
           ) : (
             <>

@@ -42,6 +42,10 @@ export function getUserFromToken(token: string) {
   return user;
 }
 
+export function deleteUserToken() {
+  localStorage.removeItem('token');
+}
+
 export function getUserToken() {
   return localStorage.getItem('token');
 }
