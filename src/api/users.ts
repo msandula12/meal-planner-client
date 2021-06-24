@@ -1,4 +1,7 @@
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+
+import { User } from 'constants/interfaces';
 
 import { ApiRoutes, BASE_URL } from './index';
 
@@ -32,4 +35,17 @@ export function signUp({
     password,
     confirmPassword,
   });
+}
+
+export function getUserFromToken(token: string) {
+  const user: User = jwt_decode(token);
+  return user;
+}
+
+export function getUserToken() {
+  return localStorage.getItem('token');
+}
+
+export function saveUserToken(token: string) {
+  localStorage.setItem('token', token);
 }

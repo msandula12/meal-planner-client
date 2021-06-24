@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
-import { signUp } from 'api/users';
+import { getUserFromToken, saveUserToken, signUp } from 'api/users';
 import { Routes } from 'constants/enums';
 import { changeUser } from 'redux/reducers/userSlice';
 import { isValidEmail } from 'utils/helpers';
@@ -82,8 +82,10 @@ function SignUp({ toggleForm }: Props) {
 
     await signUp(values)
       .then((res) => {
-        const userName = res.data.result.name;
-        dispatch(changeUser(userName));
+        const token = res.data.token;
+        const user = getUserFromToken(token);
+        saveUserToken(token);
+        dispatch(changeUser(user));
         history.push(Routes.SCHEDULE);
       })
       .catch((error) => {

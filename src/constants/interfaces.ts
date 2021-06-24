@@ -8,3 +8,8 @@ export interface Day {
 export type Meal = {
   [key in MealType]: string;
 };
+
+export interface User {
+  id: string;
+  name: string;
+}

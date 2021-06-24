@@ -8,7 +8,7 @@ import { selectCurrentUser } from 'redux/reducers/userSlice';
 import './Header.scss';
 
 function Header() {
-  const userName = useSelector(selectCurrentUser);
+  const user = useSelector(selectCurrentUser);
 
   return (
     <header>
@@ -19,9 +19,9 @@ function Header() {
           </Link>
         </span>
         <span className="header-nav-actions">
-          {userName ? (
+          {user ? (
             <>
-              <span>Welcome, {userName}!</span>
+              <span>Welcome, {user.name}!</span>
               <BiCog className="icon" title="Settings" />
               <BiLogOut className="icon" title="Logout" />
             </>

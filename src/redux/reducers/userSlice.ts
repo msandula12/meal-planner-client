@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { User } from 'constants/interfaces';
+
 import type { RootState } from '../store';
 
 interface UserState {
-  name: string;
+  user: User | null;
 }
 
 const initialState: UserState = {
-  name: '',
+  user: null,
 };
 
 // Slice
@@ -15,8 +17,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    changeUser: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    changeUser: (state, action: PayloadAction<User | null>) => {
+      state.user = action.payload;
     },
   },
 });
@@ -25,7 +27,7 @@ export const userSlice = createSlice({
 export const { changeUser } = userSlice.actions;
 
 // Selectors
-export const selectCurrentUser = (state: RootState) => state.user.name;
+export const selectCurrentUser = (state: RootState) => state.user.user;
 
 // Export reducer
 export default userSlice.reducer;
