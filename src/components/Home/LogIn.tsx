@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
 import {
@@ -89,10 +89,19 @@ function LogIn({ toggleForm }: Props) {
   if (user) {
     return (
       <div className="container form-box hoist">
-        <h2 className="form-box-header">Log In</h2>
         <div className="form-box-inputs text-center">
-          <p>{user.name}, looks like you're already logged in.</p>
-          <p>Do you wish to log out?</p>
+          <div className="input-group">
+            <p>{user.name}, looks like you're already logged in.</p>
+          </div>
+          <div className="input-group">
+            <p>
+              You can view{' '}
+              <Link className="accent-text" to={Routes.SCHEDULE}>
+                your schedule
+              </Link>
+              , or you can log out below.
+            </p>
+          </div>
         </div>
         <button className="btn btn-primary" onClick={logOut}>
           Log Out
