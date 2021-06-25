@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 import classNames from 'classnames';
 
+import { updateDay } from 'api/schedule';
 import { MealType } from 'constants/enums';
 import { Day } from 'constants/interfaces';
 import {
@@ -11,6 +12,7 @@ import {
   changeSelectedDay,
   selectSchedule,
 } from 'redux/reducers/scheduleSlice';
+import { selectCurrentUser } from 'redux/reducers/userSlice';
 import { formatDate } from 'utils/helpers';
 
 import DayPlannerInput from './DayPlannerInput';
@@ -26,6 +28,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
   const dispatch = useDispatch();
 
   const schedule = useSelector(selectSchedule);
+  const user = useSelector(selectCurrentUser);
   const disablePrev = !useSelector(canSelectPrevDay);
   const disableNext = !useSelector(canSelectNextDay);
 
@@ -58,13 +61,21 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
 
   const saveMeals = (event: BaseSyntheticEvent) => {
     event.preventDefault();
-    updateSchedule({
+    if (!user) {
+      return;
+    }
+    const updatedDay = {
       ...selectedDay,
       meals: {
         [MealType.BREAKFAST]: breakfast,
         [MealType.LUNCH]: lunch,
         [MealType.DINNER]: dinner,
       },
+    };
+    updateDay(user, updatedDay).then((res) => {
+      const newDay: Day = res.data.day;
+      updateSchedule(newDay);
+      dispatch(changeSelectedDay(newDay));
     });
   };
 
