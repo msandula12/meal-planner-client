@@ -50,8 +50,7 @@ export function getUserToken() {
   return localStorage.getItem('token') || '';
 }
 
-export const hasValidToken = () => {
-  const token = getUserToken();
+export const isValidToken = (token: string) => {
   if (!token) {
     return false;
   }
