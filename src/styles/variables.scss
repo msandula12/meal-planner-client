@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Poppins&display=swap');
 
 // Colors (general)
-$accentColor: #ff7260;
-$bgColor: #505050;
-$fgColor: #fff5c3;
-$primaryColor: #9bd7d5;
+$accentColor: #3d53b3;
+$bgColor: #a3aab6;
+$fgColor: #fbfcfc;
+$primaryColor: #b8c6e1;
 
 // Colors (meals)
-$breakfast: adjust-hue($accentColor, 20%);
-$lunch: adjust-hue($primaryColor, -20%);
-$dinner: adjust-hue($accentColor, -20%);
+$breakfast: adjust-hue($accentColor, 60deg);
+$lunch: adjust-hue($accentColor, 220deg);
+$dinner: adjust-hue($accentColor, 150deg);
 
 // Fonts
 $bodyFont: 'Poppins', sans-serif;
