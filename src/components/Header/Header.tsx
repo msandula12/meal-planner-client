@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import { BiLogIn, BiLogOut } from 'react-icons/bi';
+import { BiLogOut } from 'react-icons/bi';
 
 import { deleteUserToken } from 'api/users';
 import { Routes } from 'constants/enums';
