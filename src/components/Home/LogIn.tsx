@@ -1,11 +1,16 @@
 import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
 
-import { getUserFromToken, saveUserToken, signIn } from 'api/users';
+import {
+  deleteUserToken,
+  getUserFromToken,
+  saveUserToken,
+  signIn,
+} from 'api/users';
 import { Routes } from 'constants/enums';
-import { changeUser } from 'redux/reducers/userSlice';
+import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
 type Props = {
   toggleForm: () => void;
@@ -15,6 +20,7 @@ function LogIn({ toggleForm }: Props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const user = useSelector(selectCurrentUser);
 
   // Focus first input field on init
   useEffect(() => {
@@ -73,7 +79,27 @@ function LogIn({ toggleForm }: Props) {
       });
   };
 
+  const logOut = () => {
+    dispatch(changeUser(null));
+    deleteUserToken();
+  };
+
   const canLogIn = Object.values(values).every((value) => Boolean(value));
+
+  if (user) {
+    return (
+      <div className="container form-box hoist">
+        <h2 className="form-box-header">Log In</h2>
+        <div className="form-box-inputs text-center">
+          <p>{user.name}, looks like you're already logged in.</p>
+          <p>Do you wish to log out?</p>
+        </div>
+        <button className="btn btn-primary" onClick={logOut}>
+          Log Out
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form className="container form-box hoist" onSubmit={handleLogIn}>

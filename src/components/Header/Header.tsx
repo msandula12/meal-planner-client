@@ -49,8 +49,9 @@ function Header({ showLoginForm }: Props) {
             </>
           ) : (
             <>
-              <span>Please log in</span>
-              <BiLogIn className="icon" onClick={showLoginForm} title="Login" />
+              <span className="accent-text" onClick={showLoginForm}>
+                Please log in
+              </span>
             </>
           )}
         </span>
