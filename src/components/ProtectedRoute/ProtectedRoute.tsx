@@ -1,11 +1,9 @@
 import { createElement, FunctionComponent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
 
-import { getUserFromToken, getUserToken } from 'api/users';
+import { getUserFromToken, getUserToken, hasValidToken } from 'api/users';
 import { Routes } from 'constants/enums';
-import { Token } from 'constants/interfaces';
 import { changeUser } from 'redux/reducers/userSlice';
 
 type OwnProps = {
@@ -18,30 +16,21 @@ function ProtectedRoute({ component, ...rest }: Props) {
   const dispatch = useDispatch();
   const token = getUserToken();
 
-  const isValidToken = () => {
-    if (!token) {
-      return false;
-    }
-    const { exp: expiry }: Token = jwt_decode(token);
-    const currentTime = Date.now() / 1000;
-    return expiry > currentTime;
-  };
-
-  const hasValidToken = isValidToken();
+  const isValidToken = hasValidToken();
 
   // Get user from token and update user
   useEffect(() => {
-    if (hasValidToken) {
+    if (isValidToken) {
       const user = getUserFromToken(token);
       dispatch(changeUser(user));
     }
-  }, [dispatch, hasValidToken, token]);
+  }, [dispatch, isValidToken, token]);
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        hasValidToken ? (
+        isValidToken ? (
           createElement(component)
         ) : (
           <Redirect

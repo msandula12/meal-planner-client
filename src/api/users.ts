@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
-import { User } from 'constants/interfaces';
+import { Token, User } from 'constants/interfaces';
 
 import { ApiRoutes, BASE_URL } from './index';
 
@@ -49,6 +49,16 @@ export function deleteUserToken() {
 export function getUserToken() {
   return localStorage.getItem('token') || '';
 }
+
+export const hasValidToken = () => {
+  const token = getUserToken();
+  if (!token) {
+    return false;
+  }
+  const { exp: expiry }: Token = jwt_decode(token);
+  const currentTime = Date.now() / 1000;
+  return expiry > currentTime;
+};
 
 export function saveUserToken(token: string) {
   localStorage.setItem('token', token);
