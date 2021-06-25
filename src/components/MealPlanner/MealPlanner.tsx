@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getSchedule } from 'api/schedule';
 import { Day } from 'constants/interfaces';
 import { getMockSchedule } from 'mockData/mockData';
 import {
@@ -9,7 +10,8 @@ import {
   selectSchedule,
   selectSelectedDay,
 } from 'redux/reducers/scheduleSlice';
-import { isToday } from 'utils/helpers';
+import { selectCurrentUser } from 'redux/reducers/userSlice';
+import { fillEmptyDays, isToday } from 'utils/helpers';
 
 import DayPlanner from '../DayPlanner/DayPlanner';
 import Header from '../Header/Header';
@@ -19,14 +21,25 @@ import './MealPlanner.scss';
 
 function MealPlanner() {
   const dispatch = useDispatch();
+  const user = useSelector(selectCurrentUser);
 
   // Load schedule and set "today" as selected day
   useEffect(() => {
-    const schedule = getMockSchedule();
-    const today = schedule.find((day) => isToday(day.day));
-    dispatch(changeSchedule(schedule));
-    dispatch(changeSelectedDay(today));
-  }, [dispatch]);
+    if (user) {
+      getSchedule(user).then((res) => {
+        const schedule: Day[] = fillEmptyDays(res.data.result);
+        const today = schedule.find((day) => isToday(day.day));
+        dispatch(changeSchedule(schedule));
+        dispatch(changeSelectedDay(today));
+      });
+    } else {
+      // If no user, return mock schedule
+      const schedule = getMockSchedule();
+      const today = schedule.find((day) => isToday(day.day));
+      dispatch(changeSchedule(schedule));
+      dispatch(changeSelectedDay(today));
+    }
+  }, [dispatch, user]);
 
   const schedule = useSelector(selectSchedule);
   const selectedDay = useSelector(selectSelectedDay);
