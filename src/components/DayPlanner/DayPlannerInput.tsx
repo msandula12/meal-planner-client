@@ -9,6 +9,10 @@ type Props = {
 };
 
 function DayPlannerInput({ handleUpdate, meal, mealType }: Props) {
+  const selectText = ({ target }: BaseSyntheticEvent) => {
+    target.select();
+  };
+
   const updateInput = ({ target }: BaseSyntheticEvent) => {
     handleUpdate(target.value);
   };
@@ -22,6 +26,7 @@ function DayPlannerInput({ handleUpdate, meal, mealType }: Props) {
         className="text-input"
         id={mealType}
         onChange={updateInput}
+        onFocus={selectText}
         placeholder={`What's for ${mealType}?`}
         type="text"
         value={meal}
