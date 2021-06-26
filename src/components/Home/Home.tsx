@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import DashboardImage from 'assets/images/dashboard.png';
-import { Routes } from 'constants/enums';
 
 import Header from '../Header/Header';
 import LogIn from './LogIn';
@@ -27,11 +25,7 @@ function Home() {
       <Header showLoginForm={showLoginForm} />
       <main className="home-above-the-fold">
         <section className="home-hero">
-          <div>
-            <Link to={Routes.HOME} className="logo big">
-              MealPlanner
-            </Link>
-          </div>
+          <h1 className="logo big">MealPlanner</h1>
           <p>Your own personal menu board. No dry erase markers needed.</p>
           <div className="hero-image">
             <img src={DashboardImage} alt="MealPlanner Dashboard" />

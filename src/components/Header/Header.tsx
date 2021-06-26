@@ -39,7 +39,11 @@ function Header({ showLoginForm }: Props) {
             <>
               <span>
                 Welcome,{' '}
-                <Link className="accent-text" to={Routes.SCHEDULE}>
+                <Link
+                  className="accent-text"
+                  to={Routes.SCHEDULE}
+                  title="Go to schedule"
+                >
                   {user.name}
                 </Link>
                 !
