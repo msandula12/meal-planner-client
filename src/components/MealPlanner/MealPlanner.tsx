@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { getSchedule } from 'api/schedule';
+import { Routes } from 'constants/enums';
 import { Day } from 'constants/interfaces';
 import { getMockSchedule } from 'mockData/mockData';
 import {
@@ -21,11 +23,14 @@ import './MealPlanner.scss';
 
 function MealPlanner() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const user = useSelector(selectCurrentUser);
+
+  const isViewingDemo = location.pathname === Routes.DEMO;
 
   // Load schedule and set "today" as selected day
   useEffect(() => {
-    if (user) {
+    if (!isViewingDemo && user) {
       getSchedule(user).then((res) => {
         const schedule: Day[] = fillEmptyDays(res.data.result);
         const today = schedule.find((day) => isToday(day.day));
@@ -39,7 +44,7 @@ function MealPlanner() {
       dispatch(changeSchedule(schedule));
       dispatch(changeSelectedDay(today));
     }
-  }, [dispatch, user]);
+  }, [dispatch, isViewingDemo, user]);
 
   const schedule = useSelector(selectSchedule);
   const selectedDay = useSelector(selectSelectedDay);
@@ -60,10 +65,9 @@ function MealPlanner() {
     <div className="meal-planner-wrapper">
       <main className="container meal-planner hoist">
         <Header />
-        {!user && (
+        {isViewingDemo && (
           <p className="placeholder demo-text">
-            You are a viewing a readonly demo. Only registered users can save
-            changes.
+            You are a viewing a readonly demo.
           </p>
         )}
         <section className="meal-planner-dashboard">
@@ -73,6 +77,7 @@ function MealPlanner() {
             setSelectedDay={handleSelectedDay}
           />
           <DayPlanner
+            isViewingDemo={isViewingDemo}
             selectedDay={selectedDay}
             updateSchedule={handleUpdateSchedule}
           />

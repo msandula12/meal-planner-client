@@ -20,11 +20,12 @@ import DayPlannerInput from './DayPlannerInput';
 import './DayPlanner.scss';
 
 type Props = {
+  isViewingDemo: boolean;
   selectedDay: Day | undefined;
   updateSchedule: (day: Day) => void;
 };
 
-function DayPlanner({ selectedDay, updateSchedule }: Props) {
+function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
   const dispatch = useDispatch();
 
   const schedule = useSelector(selectSchedule);
@@ -45,7 +46,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
   }, [selectedDay]);
 
   const canSaveMeals = useMemo(() => {
-    if (!selectedDay || !user) {
+    if (isViewingDemo || !selectedDay) {
       return false;
     }
     return (
@@ -53,7 +54,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
       selectedDay.meals[MealType.LUNCH] !== lunch ||
       selectedDay.meals[MealType.DINNER] !== dinner
     );
-  }, [breakfast, lunch, dinner, selectedDay, user]);
+  }, [breakfast, lunch, dinner, isViewingDemo, selectedDay]);
 
   if (!selectedDay) {
     return <section className="container day-planner">No day selected</section>;
