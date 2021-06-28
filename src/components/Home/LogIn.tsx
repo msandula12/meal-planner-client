@@ -2,6 +2,7 @@ import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
+import classNames from 'classnames';
 
 import {
   deleteUserToken,
@@ -11,6 +12,8 @@ import {
 } from 'api/users';
 import { Routes } from 'constants/enums';
 import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
+
+import Loading from '../Loading/Loading';
 
 type Props = {
   toggleForm: () => void;
@@ -29,6 +32,7 @@ function LogIn({ toggleForm }: Props) {
     }
   }, []);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const [errors, setErrors] = useState({
@@ -54,6 +58,7 @@ function LogIn({ toggleForm }: Props) {
 
   const handleLogIn = async (event: BaseSyntheticEvent) => {
     event.preventDefault();
+    setIsLoading(true);
     const currentErrors = {
       email: '',
       password: '',
@@ -76,7 +81,8 @@ function LogIn({ toggleForm }: Props) {
       })
       .catch((error) => {
         setErrors(error.response.data);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const logOut = () => {
@@ -85,6 +91,10 @@ function LogIn({ toggleForm }: Props) {
   };
 
   const canLogIn = Object.values(values).every((value) => Boolean(value));
+
+  const loadingCls = classNames({
+    'loading-wrapper': isLoading,
+  });
 
   if (user) {
     return (
@@ -157,12 +167,15 @@ function LogIn({ toggleForm }: Props) {
           )}
         </div>
       </div>
-      <input
-        className="btn btn-primary"
-        disabled={!canLogIn}
-        type="submit"
-        value="Log in to your account"
-      />
+      <div className={loadingCls}>
+        <input
+          className="btn btn-primary fluid"
+          disabled={!canLogIn}
+          type="submit"
+          value={isLoading ? ' ' : 'Log in to your account'}
+        />
+        {isLoading && <Loading />}
+      </div>
       <p className="form-box-footer">
         Don't have an account?{' '}
         <span className="accent-text" onClick={toggleForm}>
