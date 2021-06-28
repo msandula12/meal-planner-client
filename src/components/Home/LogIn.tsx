@@ -76,12 +76,13 @@ function LogIn({ toggleForm }: Props) {
         const user = getUserFromToken(token);
         saveUserToken(token);
         dispatch(changeUser(user));
+        setIsLoading(false);
         history.push(Routes.SCHEDULE);
       })
       .catch((error) => {
         setErrors(error.response.data);
-      })
-      .finally(() => setIsLoading(false));
+        setIsLoading(false);
+      });
   };
 
   const logOut = () => {
