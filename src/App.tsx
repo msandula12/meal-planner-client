@@ -29,6 +29,7 @@ function App() {
     <>
       <Switch>
         <Route exact path={Routes.HOME} component={Home} />
+        <Route path={Routes.DEMO} component={MealPlanner} />
         <ProtectedRoute path={Routes.SCHEDULE} component={MealPlanner} />
         <Route path={Routes.NOT_FOUND} component={NotFound} />
       </Switch>

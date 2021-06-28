@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { BiRightArrowAlt } from 'react-icons/bi';
 import dayjs from 'dayjs';
 
 import DashboardImage from 'assets/images/dashboard.png';
+import { Routes } from 'constants/enums';
 
 import Header from '../Header/Header';
 import LogIn from './LogIn';
@@ -27,6 +30,12 @@ function Home() {
         <section className="home-hero">
           <h1 className="logo big">MealPlanner</h1>
           <p>Your own personal menu board. No dry erase markers needed.</p>
+          <div className="home-demo">
+            <BiRightArrowAlt />{' '}
+            <Link to={Routes.DEMO} className="accent-text">
+              Try it out!
+            </Link>
+          </div>
           <div className="hero-image">
             <img src={DashboardImage} alt="MealPlanner Dashboard" />
           </div>
