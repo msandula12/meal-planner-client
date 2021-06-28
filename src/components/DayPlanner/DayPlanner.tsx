@@ -16,6 +16,7 @@ import { selectCurrentUser } from 'redux/reducers/userSlice';
 import { formatDate } from 'utils/helpers';
 
 import DayPlannerInput from './DayPlannerInput';
+import Loading from '../Loading/Loading';
 
 import './DayPlanner.scss';
 
@@ -33,6 +34,7 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
   const disablePrev = !useSelector(canSelectPrevDay);
   const disableNext = !useSelector(canSelectNextDay);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [breakfast, setBreakfast] = useState('');
   const [lunch, setLunch] = useState('');
   const [dinner, setDinner] = useState('');
@@ -65,6 +67,7 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
     if (!user) {
       return;
     }
+    setIsLoading(true);
     const updatedDay = {
       ...selectedDay,
       meals: {
@@ -73,11 +76,14 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
         [MealType.DINNER]: dinner,
       },
     };
-    updateDay(user, updatedDay).then((res) => {
-      const newDay: Day = res.data.day;
-      updateSchedule(newDay);
-      dispatch(changeSelectedDay(newDay));
-    });
+    updateDay(user, updatedDay)
+      .then((res) => {
+        const newDay: Day = res.data.day;
+        updateSchedule(newDay);
+        dispatch(changeSelectedDay(newDay));
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
   };
 
   const getPrevDay = () => {
@@ -98,6 +104,10 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
 
   const rightCls = classNames('icon', 'day-selector-icon', {
     disabled: disableNext,
+  });
+
+  const loadingCls = classNames({
+    'loading-wrapper': isLoading,
   });
 
   return (
@@ -124,13 +134,16 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
           mealType={MealType.DINNER}
         />
       </div>
-      <input
-        className="btn btn-primary"
-        disabled={!canSaveMeals}
-        onClick={saveMeals}
-        type="submit"
-        value="Save"
-      />
+      <div className={loadingCls}>
+        <input
+          className="btn btn-primary fluid"
+          disabled={!canSaveMeals}
+          onClick={saveMeals}
+          type="submit"
+          value={isLoading ? ' ' : 'Save'}
+        />
+        {isLoading && <Loading />}
+      </div>
     </form>
   );
 }
