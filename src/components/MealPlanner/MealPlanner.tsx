@@ -60,6 +60,12 @@ function MealPlanner() {
     <div className="meal-planner-wrapper">
       <main className="container meal-planner hoist">
         <Header />
+        {!user && (
+          <p className="placeholder demo-text">
+            You are a viewing a readonly demo. Only registered users can save
+            changes.
+          </p>
+        )}
         <section className="meal-planner-dashboard">
           <Schedule
             schedule={schedule}
