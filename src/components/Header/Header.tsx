@@ -9,10 +9,10 @@ import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 import './Header.scss';
 
 type Props = {
-  showLoginForm?: () => void;
+  goToLogIn?: () => void;
 };
 
-function Header({ showLoginForm }: Props) {
+function Header({ goToLogIn }: Props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -53,7 +53,7 @@ function Header({ showLoginForm }: Props) {
             </>
           ) : (
             <>
-              <span className="accent-text" onClick={showLoginForm}>
+              <span className="accent-text" onClick={goToLogIn}>
                 Please log in
               </span>
             </>

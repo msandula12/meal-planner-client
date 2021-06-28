@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Header showLoginForm={showLoginForm} />
+      <Header goToLogIn={showLoginForm} />
       <main className="home-above-the-fold">
         <section className="home-hero">
           <h1 className="logo big">MealPlanner</h1>

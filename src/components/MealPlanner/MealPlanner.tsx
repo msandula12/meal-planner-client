@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { getSchedule } from 'api/schedule';
 import { Routes } from 'constants/enums';
@@ -23,6 +23,7 @@ import './MealPlanner.scss';
 
 function MealPlanner() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const location = useLocation();
   const user = useSelector(selectCurrentUser);
 
@@ -49,6 +50,10 @@ function MealPlanner() {
   const schedule = useSelector(selectSchedule);
   const selectedDay = useSelector(selectSelectedDay);
 
+  const goToLogIn = () => {
+    history.push(Routes.HOME);
+  };
+
   const handleSelectedDay = (day: Day) => {
     dispatch(changeSelectedDay(day));
   };
@@ -64,7 +69,7 @@ function MealPlanner() {
   return (
     <div className="meal-planner-wrapper">
       <main className="container meal-planner hoist">
-        <Header />
+        <Header goToLogIn={goToLogIn} />
         {isViewingDemo && (
           <p className="placeholder demo-text">
             You are a viewing a readonly demo.
