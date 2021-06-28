@@ -13,7 +13,7 @@ import SignUp from './SignUp';
 import './Home.scss';
 
 function Home() {
-  const [isSigningUp, setIsSigningUp] = useState(true);
+  const [isSigningUp, setIsSigningUp] = useState(false);
 
   const toggleIsSigningUp = () => {
     setIsSigningUp((prevIsSigningup) => !prevIsSigningup);
