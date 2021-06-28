@@ -64,7 +64,7 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
 
   const saveMeals = (event: BaseSyntheticEvent) => {
     event.preventDefault();
-    if (!user) {
+    if (isViewingDemo || !user) {
       return;
     }
     setIsLoading(true);
