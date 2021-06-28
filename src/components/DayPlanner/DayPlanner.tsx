@@ -45,7 +45,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
   }, [selectedDay]);
 
   const canSaveMeals = useMemo(() => {
-    if (!selectedDay) {
+    if (!selectedDay || !user) {
       return false;
     }
     return (
@@ -53,7 +53,7 @@ function DayPlanner({ selectedDay, updateSchedule }: Props) {
       selectedDay.meals[MealType.LUNCH] !== lunch ||
       selectedDay.meals[MealType.DINNER] !== dinner
     );
-  }, [breakfast, lunch, dinner, selectedDay]);
+  }, [breakfast, lunch, dinner, selectedDay, user]);
 
   if (!selectedDay) {
     return <section className="container day-planner">No day selected</section>;
