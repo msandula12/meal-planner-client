@@ -135,22 +135,6 @@ input {
   }
 }
 
-.loading-wrapper {
-  opacity: 0.4;
-  position: relative;
-
-  .loading {
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    top: 0.25rem;
-    width: 100%;
-  }
-}
-
 .logo {
   color: $accentColor;
   font-family: $accentFont;

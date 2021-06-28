@@ -16,7 +16,7 @@ import { selectCurrentUser } from 'redux/reducers/userSlice';
 import { formatDate } from 'utils/helpers';
 
 import DayPlannerInput from './DayPlannerInput';
-import Loading from '../Loading/Loading';
+import LoadingWrapper from '../Loading/LoadingWrapper';
 
 import './DayPlanner.scss';
 
@@ -106,10 +106,6 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
     disabled: disableNext,
   });
 
-  const loadingCls = classNames({
-    'loading-wrapper': isLoading,
-  });
-
   return (
     <form className="container form-box day-planner" onSubmit={saveMeals}>
       <div className="day-planner-header">
@@ -134,7 +130,7 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
           mealType={MealType.DINNER}
         />
       </div>
-      <div className={loadingCls}>
+      <LoadingWrapper isLoading={isLoading}>
         <input
           className="btn btn-primary fluid"
           disabled={!canSaveMeals}
@@ -142,8 +138,7 @@ function DayPlanner({ isViewingDemo, selectedDay, updateSchedule }: Props) {
           type="submit"
           value={isLoading ? ' ' : 'Save'}
         />
-        {isLoading && <Loading />}
-      </div>
+      </LoadingWrapper>
     </form>
   );
 }

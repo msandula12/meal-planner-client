@@ -2,7 +2,6 @@ import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { BiHide, BiShow } from 'react-icons/bi';
-import classNames from 'classnames';
 
 import {
   deleteUserToken,
@@ -13,7 +12,7 @@ import {
 import { Routes } from 'constants/enums';
 import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
-import Loading from '../Loading/Loading';
+import LoadingWrapper from '../Loading/LoadingWrapper';
 
 type Props = {
   toggleForm: () => void;
@@ -92,10 +91,6 @@ function LogIn({ toggleForm }: Props) {
 
   const canLogIn = Object.values(values).every((value) => Boolean(value));
 
-  const loadingCls = classNames({
-    'loading-wrapper': isLoading,
-  });
-
   if (user) {
     return (
       <div className="container form-box hoist">
@@ -167,15 +162,14 @@ function LogIn({ toggleForm }: Props) {
           )}
         </div>
       </div>
-      <div className={loadingCls}>
+      <LoadingWrapper isLoading={isLoading}>
         <input
           className="btn btn-primary fluid"
           disabled={!canLogIn}
           type="submit"
           value={isLoading ? ' ' : 'Log in to your account'}
         />
-        {isLoading && <Loading />}
-      </div>
+      </LoadingWrapper>
       <p className="form-box-footer">
         Don't have an account?{' '}
         <span className="accent-text" onClick={toggleForm}>
