@@ -16,13 +16,9 @@ function ScheduleMeal({ meal, mealType }: Props) {
   });
 
   return (
-    <textarea
-      className={cls}
-      placeholder="n/a"
-      readOnly
-      title={meal}
-      value={meal}
-    />
+    <li className={cls} title={meal}>
+      {meal || 'n/a'}
+    </li>
   );
 }
 

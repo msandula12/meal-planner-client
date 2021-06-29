@@ -36,7 +36,7 @@ function ScheduleDay({ day, isSelected, setSelectedDay }: Props) {
       >
         {formattedDate}
       </p>
-      <div className="schedule-day-meals">
+      <ul className="schedule-day-meals">
         <ScheduleMeal
           meal={day.meals[MealType.BREAKFAST]}
           mealType={MealType.BREAKFAST}
@@ -49,7 +49,7 @@ function ScheduleDay({ day, isSelected, setSelectedDay }: Props) {
           meal={day.meals[MealType.DINNER]}
           mealType={MealType.DINNER}
         />
-      </div>
+      </ul>
     </div>
   );
 }
