@@ -6,6 +6,8 @@ import { deleteUserToken } from 'api/users';
 import { Routes } from 'constants/enums';
 import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
+import DarkModeToggle from 'components/DarkModeToggle/DarkModeToggle';
+
 import './Header.scss';
 
 type Props = {
@@ -58,6 +60,7 @@ function Header({ goToLogIn }: Props) {
               </span>
             </>
           )}
+          <DarkModeToggle />
         </span>
       </nav>
     </header>
