@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ import { fillEmptyDays, isToday } from 'utils/helpers';
 
 import DayPlanner from '../DayPlanner/DayPlanner';
 import Header from '../Header/Header';
+import Loading from '../Loading/Loading';
 import Schedule from '../Schedule/Schedule';
 
 import './MealPlanner.scss';
@@ -27,16 +28,20 @@ function MealPlanner() {
   const location = useLocation();
   const user = useSelector(selectCurrentUser);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const isViewingDemo = location.pathname === Routes.DEMO;
 
   // Load schedule and set "today" as selected day
   useEffect(() => {
+    setIsLoading(true);
     if (!isViewingDemo && user) {
       getSchedule(user).then((res) => {
         const schedule: Day[] = fillEmptyDays(res.data.result);
         const today = schedule.find((day) => isToday(day.day));
         dispatch(changeSchedule(schedule));
         dispatch(changeSelectedDay(today));
+        setIsLoading(false);
       });
     } else {
       // If no user, return mock schedule
@@ -44,6 +49,7 @@ function MealPlanner() {
       const today = schedule.find((day) => isToday(day.day));
       dispatch(changeSchedule(schedule));
       dispatch(changeSelectedDay(today));
+      setIsLoading(false);
     }
   }, [dispatch, isViewingDemo, user]);
 
@@ -68,6 +74,7 @@ function MealPlanner() {
 
   return (
     <div className="meal-planner-wrapper">
+      {isLoading && <Loading fullscreen />}
       <main className="container meal-planner hoist">
         <Header goToLogIn={goToLogIn} />
         {isViewingDemo && (
