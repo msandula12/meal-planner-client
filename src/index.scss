@@ -1,9 +1,11 @@
-@import './styles/variables';
+@import 'styles/variables';
 
 /* Element */
 * {
   box-sizing: border-box;
   margin: 0;
+  color: var(--fontColorBody);
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
 }
 
 a {
@@ -15,6 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: $bodyFont;
   min-height: 100vh;
+  color: var(--fontColorBody);
 }
 
 button,
@@ -30,7 +33,7 @@ ul {
 
 /* General */
 .accent-text {
-  color: $accentColor;
+  color: var(--accentColor);
 
   &:hover {
     cursor: pointer;
@@ -39,8 +42,8 @@ ul {
 }
 
 .btn {
-  border: 2px solid darken($accentColor, 10%);
-  box-shadow: 0 0.5rem 0 darken($accentColor, 10%);
+  border: 2px solid var(--accentColorDark);
+  box-shadow: 0 0.5rem 0 var(--accentColorDark);
   padding: 0.75rem 1rem;
   transition: background-color 0.2s ease-in, filter 0.2s ease-in;
 
@@ -55,13 +58,13 @@ ul {
   }
 
   &.btn-primary {
-    background-color: $accentColor;
+    background-color: var(--accentColor);
     color: white;
   }
 }
 
 .container {
-  box-shadow: 0.5rem 0.75rem 0 darken($bgColor, 10%);
+  box-shadow: 0.5rem 0.75rem 0 var(--bgColorDark);
   padding: 2rem;
 }
 
@@ -70,12 +73,12 @@ ul {
 }
 
 .form-box {
-  background-color: $primaryColor;
+  background-color: var(--primaryColor);
   display: flex;
   flex-direction: column;
 
   .form-box-header {
-    color: $accentColor;
+    color: var(--accentColor);
     margin-bottom: 1rem;
   }
 
@@ -108,7 +111,7 @@ ul {
 
   .error-msg {
     bottom: 0.5rem;
-    color: rgb(200, 40, 40);
+    color: $danger;
     font-size: 0.8rem;
     left: 0;
     position: absolute;
@@ -116,7 +119,7 @@ ul {
 }
 
 .input-label {
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--fontColorAccent);
   display: block;
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
@@ -141,7 +144,7 @@ ul {
 }
 
 .logo {
-  color: $accentColor;
+  color: var(--accentColor);
   font-family: $accentFont;
   font-size: 2rem;
   font-weight: bold;
@@ -153,7 +156,7 @@ ul {
 }
 
 .placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--fontColorAccent);
   font-style: italic;
 }
 
@@ -165,6 +168,7 @@ ul {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-bottom: 0.25rem solid rgba(0, 0, 0, 0.1);
+  color: #1c1c1c;
   font-size: 1rem;
   padding: 0.75rem 1rem;
   transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
@@ -176,7 +180,7 @@ ul {
 
   &:focus {
     background-color: rgba(255, 255, 255, 0.8);
-    border-color: darken($primaryColor, 10%);
+    border-color: var(--primaryColor);
     outline: none;
   }
 }

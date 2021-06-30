@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .home {
-  background-color: $fgColor;
+  background-color: var(--fgColor);
   padding: 2rem 4rem;
   min-height: 100vh;
   display: flex;
@@ -32,7 +32,7 @@
   margin-top: 2rem;
 
   img {
-    box-shadow: 6rem 6rem 6rem rgba(0, 0, 0, 0.4);
+    box-shadow: 6rem 6rem 6rem var(--shadowColor);
     transform: scale(0.5) skew(-40deg, 20deg);
     width: 100%;
   }
