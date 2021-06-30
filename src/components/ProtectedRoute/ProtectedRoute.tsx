@@ -2,7 +2,12 @@ import { createElement, FunctionComponent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 
-import { getUserFromToken, getUserToken, isValidToken } from 'api/users';
+import {
+  deleteUserToken,
+  getUserFromToken,
+  getUserToken,
+  isValidToken,
+} from 'api/users';
 import { Routes } from 'constants/enums';
 import { changeUser } from 'redux/reducers/userSlice';
 
@@ -23,6 +28,9 @@ function ProtectedRoute({ component, ...rest }: Props) {
     if (hasValidToken) {
       const user = getUserFromToken(token);
       dispatch(changeUser(user));
+    } else {
+      deleteUserToken();
+      dispatch(changeUser(null));
     }
   }, [dispatch, hasValidToken, token]);
 
