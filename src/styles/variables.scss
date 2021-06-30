@@ -4,13 +4,13 @@
 /* Light mode */
 :root {
   // General colors
-  --accentColor: #0085ff;
-  --accentColorDark: #{darken(#0085ff, 10%)};
-  --bgColor: #{darken(#0085ff, 20%)};
-  --bgColorDark: #{darken(#0085ff, 30%)};
+  --accentColor: #2b75b9;
+  --accentColorDark: #{darken(#2b75b9, 10%)};
+  --bgColor: #{darken(#2b75b9, 20%)};
+  --bgColorDark: #{darken(#2b75b9, 30%)};
   --fgColor: #e8e8e8;
-  --primaryColor: #{lighten(#0085ff, 40%)};
-  --primaryColorDark: #{lighten(#0085ff, 30%)};
+  --primaryColor: #{lighten(#2b75b9, 40%)};
+  --primaryColorDark: #{lighten(#2b75b9, 30%)};
   --shadowColor: rgba(0, 0, 0, 0.4);
   // Font colors
   --fontColorBody: #1c1c1c;
@@ -19,13 +19,13 @@
   /* Dark mode */
   .dark {
     // General colors
-    --accentColor: #0085ff;
-    --accentColorDark: #{darken(#0085ff, 10%)};
-    --bgColor: #{darken(#0085ff, 40%)};
-    --bgColorDark: #{darken(#0085ff, 50%)};
+    --accentColor: #2b75b9;
+    --accentColorDark: #{darken(#2b75b9, 10%)};
+    --bgColor: #{darken(#2b75b9, 40%)};
+    --bgColorDark: #{darken(#2b75b9, 50%)};
     --fgColor: #1c1c1c;
-    --primaryColor: #{darken(#0085ff, 20%)};
-    --primaryColorDark: #{darken(#0085ff, 30%)};
+    --primaryColor: #{darken(#2b75b9, 20%)};
+    --primaryColorDark: #{darken(#2b75b9, 30%)};
     --shadowColor: rgba(255, 255, 255, 0.1);
     // Font colors
     --fontColorBody: #e8e8e8;
