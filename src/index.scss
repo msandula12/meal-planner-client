@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   color: var(--fontColorBody);
-  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
 }
 
 a {
@@ -131,15 +131,9 @@ ul {
 
   .input-icon {
     font-size: 1.25rem;
-    opacity: 0.6;
     position: absolute;
     right: 0.75rem;
     top: 0.75rem;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 1;
-    }
   }
 }
 
