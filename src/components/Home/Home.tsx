@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import dayjs from 'dayjs';
@@ -7,7 +6,7 @@ import dayjs from 'dayjs';
 import DashboardImage from 'assets/images/dashboard.png';
 import DashboardDarkModeImage from 'assets/images/dashboard-dark.png';
 import { Routes } from 'constants/enums';
-import { selectIsDarkMode } from 'redux/reducers/userSlice';
+import { ThemeContext } from 'context/ThemeContext';
 
 import Header from '../Header/Header';
 import LogIn from './LogIn';
@@ -16,7 +15,7 @@ import SignUp from './SignUp';
 import './Home.scss';
 
 function Home() {
-  const isDarkMode = useSelector(selectIsDarkMode);
+  const { isDarkMode } = useContext(ThemeContext);
   const [isSigningUp, setIsSigningUp] = useState(false);
 
   const toggleIsSigningUp = () => {

@@ -1,15 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useContext } from 'react';
 import { BiMoon, BiSun } from 'react-icons/bi';
 
-import { changeDarkMode, selectIsDarkMode } from 'redux/reducers/userSlice';
+import { ThemeContext } from 'context/ThemeContext';
 
 function DarkModeToggle() {
-  const dispatch = useDispatch();
-  const isDarkMode = useSelector(selectIsDarkMode);
-
-  const toggleDarkMode = () => {
-    dispatch(changeDarkMode(!isDarkMode));
-  };
+  const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return isDarkMode ? (
     <BiMoon

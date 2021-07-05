@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { getUserFromToken, getUserToken, isValidToken } from 'api/users';
 import { Routes } from 'constants/enums';
-import { changeUser, selectIsDarkMode } from 'redux/reducers/userSlice';
+import { ThemeContext } from 'context/ThemeContext';
+import { changeUser } from 'redux/reducers/userSlice';
 
 import Home from 'components/Home/Home';
 import MealPlanner from 'components/MealPlanner/MealPlanner';
@@ -15,7 +16,7 @@ import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute';
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const isDarkMode = useSelector(selectIsDarkMode);
+  const { isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     const token = getUserToken();
