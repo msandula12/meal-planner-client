@@ -29,7 +29,6 @@ export function ThemeProvider({ children }: Props) {
   const [isDarkMode, setIsDarkMode] = useState(getInitialDarkModePreference());
 
   const toggleDarkMode = () => {
-    console.log('toggleDarkMode');
     setIsDarkMode((prevIsDarkMode) => {
       localStorage.setItem('theme', prevIsDarkMode ? 'light' : 'dark');
       return !prevIsDarkMode;
