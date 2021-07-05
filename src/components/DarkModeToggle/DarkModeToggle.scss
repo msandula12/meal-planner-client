@@ -1,0 +1,53 @@
+.theme-switch-wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 2rem;
+  position: relative;
+  width: 4rem;
+
+  input {
+    display: none;
+  }
+}
+
+.slider {
+  background-color: var(--accentColorDark);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+
+  &:before {
+    background-color: #fff;
+    top: 4px;
+    content: '';
+    height: calc(2rem - 8px);
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    width: calc(2rem - 8px);
+  }
+}
+
+input:checked + .slider {
+  background-color: var(--accentColor);
+}
+
+input:checked + .slider:before {
+  transform: translateX(calc(2rem));
+}
+
+.slider.round {
+  border-radius: 2rem;
+
+  &:before {
+    border-radius: 50%;
+  }
+}
