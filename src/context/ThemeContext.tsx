@@ -20,14 +20,24 @@ export function ThemeProvider({ children }: Props) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
     const prefersDarkMode = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches;
-    setIsDarkMode(Boolean(prefersDarkMode));
+    const initialValue = Boolean(storedTheme)
+      ? storedTheme === 'dark'
+        ? true
+        : false
+      : Boolean(prefersDarkMode);
+    setIsDarkMode(initialValue);
   }, []);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode);
+    console.log('toggleDarkMode');
+    setIsDarkMode((prevIsDarkMode) => {
+      localStorage.setItem('theme', prevIsDarkMode ? 'light' : 'dark');
+      return !prevIsDarkMode;
+    });
   };
 
   return (
