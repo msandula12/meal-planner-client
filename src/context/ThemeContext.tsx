@@ -1,36 +1,32 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 type ThemeContextType = {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
 };
 
-const initialState: ThemeContextType = {
-  isDarkMode: false,
-  toggleDarkMode: () => {},
-};
-
-export const ThemeContext = createContext<ThemeContextType>(initialState);
+export const ThemeContext = createContext<ThemeContextType>(undefined!);
 
 type Props = {
   children: ReactNode;
 };
 
 export function ThemeProvider({ children }: Props) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
+  const getInitialDarkModePreference = () => {
+    // Check localStorage
     const storedTheme = localStorage.getItem('theme');
+    if (Boolean(storedTheme)) {
+      return storedTheme === 'dark';
+    }
+
+    // Otherwise, default to user's prefers-color-scheme value
     const prefersDarkMode = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches;
-    const initialValue = Boolean(storedTheme)
-      ? storedTheme === 'dark'
-        ? true
-        : false
-      : Boolean(prefersDarkMode);
-    setIsDarkMode(initialValue);
-  }, []);
+    return Boolean(prefersDarkMode);
+  };
+
+  const [isDarkMode, setIsDarkMode] = useState(getInitialDarkModePreference());
 
   const toggleDarkMode = () => {
     console.log('toggleDarkMode');
