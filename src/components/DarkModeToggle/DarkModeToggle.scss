@@ -1,9 +1,11 @@
 .theme-switch-wrapper {
   align-items: center;
   display: flex;
+  margin-left: 1rem;
 }
 
 .theme-switch {
+  cursor: pointer;
   display: inline-block;
   height: 2rem;
   position: relative;
@@ -15,9 +17,8 @@
 }
 
 .slider {
-  background-color: var(--accentColorDark);
+  background-color: var(--primaryColor);
   bottom: 0;
-  cursor: pointer;
   left: 0;
   position: absolute;
   right: 0;
@@ -26,18 +27,19 @@
 
   &:before {
     background-color: #fff;
-    top: 4px;
     content: '';
     height: calc(2rem - 8px);
     left: 4px;
     position: absolute;
+    top: 4px;
     transition: 0.4s;
     width: calc(2rem - 8px);
+    z-index: 1;
   }
 }
 
 input:checked + .slider {
-  background-color: var(--accentColor);
+  background-color: var(--primaryColor);
 }
 
 input:checked + .slider:before {
@@ -49,5 +51,18 @@ input:checked + .slider:before {
 
   &:before {
     border-radius: 50%;
+  }
+}
+
+.dark-mode-icon {
+  position: absolute;
+  top: 8px;
+
+  &.moon {
+    left: 10px;
+  }
+
+  &.sun {
+    right: 10px;
   }
 }
