@@ -155,7 +155,17 @@ function LogIn({ toggleForm }: Props) {
               onClick={toggleShowPassword}
               title={`${showPassword ? 'Hide' : 'Show'} password`}
             >
-              {showPassword ? <BiHide /> : <BiShow />}
+              {showPassword ? (
+                <BiHide
+                  className="icon"
+                  style={{ fill: 'rgba(0, 0, 0, 0.8)' }}
+                />
+              ) : (
+                <BiShow
+                  className="icon"
+                  style={{ fill: 'rgba(0, 0, 0, 0.8)' }}
+                />
+              )}
             </span>
           </div>
           {errors.password && (

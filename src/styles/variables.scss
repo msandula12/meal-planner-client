@@ -1,16 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Poppins&display=swap');
 
-// Colors (general)
-$accentColor: #3d53b3;
-$bgColor: #a3aab6;
-$fgColor: #fbfcfc;
-$primaryColor: #b8c6e1;
+/* Light mode */
+:root {
+  // General colors
+  --accentColor: #2b75b9;
+  --accentColorDark: #{darken(#2b75b9, 10%)};
+  --bgColor: #{darken(#2b75b9, 20%)};
+  --bgColorDark: #{darken(#2b75b9, 30%)};
+  --fgColor: #e8e8e8;
+  --primaryColor: #{lighten(#2b75b9, 40%)};
+  --primaryColorDark: #{lighten(#2b75b9, 30%)};
+  --shadowColor: rgba(0, 0, 0, 0.4);
+  // Font colors
+  --fontColorBody: #1c1c1c;
+  --fontColorAccent: #585757;
 
-// Colors (meals)
-$breakfast: adjust-hue($accentColor, 60deg);
-$lunch: adjust-hue($accentColor, 220deg);
-$dinner: adjust-hue($accentColor, 150deg);
+  /* Dark mode */
+  .dark {
+    // General colors
+    --accentColor: #2b75b9;
+    --accentColorDark: #{darken(#2b75b9, 10%)};
+    --bgColor: #{darken(#2b75b9, 40%)};
+    --bgColorDark: #{darken(#2b75b9, 50%)};
+    --fgColor: #1c1c1c;
+    --primaryColor: #{darken(#2b75b9, 20%)};
+    --primaryColorDark: #{darken(#2b75b9, 30%)};
+    --shadowColor: rgba(255, 255, 255, 0.1);
+    // Font colors
+    --fontColorBody: #e8e8e8;
+    --fontColorAccent: #969696;
+  }
+}
+
+// Meal colors
+$breakfast: #b62bb9;
+$lunch: #2eb92b;
+$dinner: #b96f2b;
+
+// Other colors
+$success: #00ba34;
+$warning: #f98600;
+$danger: #e92c2c;
 
 // Fonts
 $bodyFont: 'Poppins', sans-serif;

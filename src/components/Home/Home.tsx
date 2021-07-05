@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import dayjs from 'dayjs';
 
 import DashboardImage from 'assets/images/dashboard.png';
+import DashboardDarkModeImage from 'assets/images/dashboard-dark.png';
 import { Routes } from 'constants/enums';
+import { ThemeContext } from 'context/ThemeContext';
 
 import Header from '../Header/Header';
 import LogIn from './LogIn';
@@ -13,6 +15,7 @@ import SignUp from './SignUp';
 import './Home.scss';
 
 function Home() {
+  const { isDarkMode } = useContext(ThemeContext);
   const [isSigningUp, setIsSigningUp] = useState(false);
 
   const toggleIsSigningUp = () => {
@@ -37,7 +40,10 @@ function Home() {
             </Link>
           </div>
           <div className="hero-image">
-            <img src={DashboardImage} alt="MealPlanner Dashboard" />
+            <img
+              src={isDarkMode ? DashboardDarkModeImage : DashboardImage}
+              alt="MealPlanner Dashboard"
+            />
           </div>
         </section>
         <section className="home-form">
