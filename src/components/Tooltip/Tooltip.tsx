@@ -1,4 +1,5 @@
 import { cloneElement, ReactElement, useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
 
 import { getDocumentOffsetPosition } from 'utils/helpers';
 
@@ -13,10 +14,7 @@ type Props = {
 function Tooltip({ children, content, wrapped }: Props) {
   const ref = useRef<HTMLElement | null>(null);
 
-  const [tooltipFade, setTooltipFade] = useState({
-    opacity: 0,
-    transform: 'translate3d(0, -1rem, 0)',
-  });
+  const [isVisible, setIsVisible] = useState(false);
 
   const [tooltipPosition, setTooltipPosition] = useState({
     left: '0px',
@@ -46,25 +44,23 @@ function Tooltip({ children, content, wrapped }: Props) {
   }, []);
 
   const showTooltip = () => {
+    setIsVisible(true);
     if (ref.current) {
       const { left, top } = getDocumentOffsetPosition(ref.current);
       setTooltipPosition({
         left: `${left}px`,
         top: `calc(2.5rem + ${top}px)`,
       });
-      setTooltipFade({
-        opacity: 1,
-        transform: 'translate3d(0, 0, 0)',
-      });
     }
   };
 
   const hideTooltip = () => {
-    setTooltipFade({
-      opacity: 0,
-      transform: 'translate3d(0, -1rem, 0)',
-    });
+    setIsVisible(false);
   };
+
+  const cls = classNames('tooltip', {
+    fade: isVisible,
+  });
 
   return (
     <>
@@ -81,7 +77,7 @@ function Tooltip({ children, content, wrapped }: Props) {
             ref: (element: HTMLElement) => (ref.current = element),
           })}
       {/* The actual tooltip element */}
-      <span className="tooltip" style={{ ...tooltipFade, ...tooltipPosition }}>
+      <span className={cls} style={tooltipPosition}>
         {content}
       </span>
     </>
