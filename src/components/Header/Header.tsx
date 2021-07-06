@@ -52,7 +52,6 @@ function Header({ goToLogIn }: Props) {
                 />
                 !
               </span>
-              {/* <BiCog className="icon" title="Settings" /> */}
               <Tooltip
                 content="Log out"
                 trigger={<BiLogOut className="icon" onClick={logOut} />}

@@ -15,11 +15,7 @@ function ScheduleMeal({ meal, mealType }: Props) {
     placeholder: !meal.length,
   });
 
-  return (
-    <li className={cls} title={meal}>
-      {meal || 'n/a'}
-    </li>
-  );
+  return <li className={cls}>{meal || 'n/a'}</li>;
 }
 
 export default ScheduleMeal;
