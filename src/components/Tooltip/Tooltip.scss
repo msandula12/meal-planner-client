@@ -12,7 +12,7 @@
   }
 
   &:after {
-    border-bottom: 0.5rem solid rgba(0, 0, 0, 0.75);
+    border-bottom: 0.5rem solid var(--fontColorBody);
     border-left: 0.5rem solid transparent;
     border-right: 0.5rem solid transparent;
     content: '';
@@ -23,9 +23,9 @@
   }
 
   &:before {
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--fontColorBody);
     border-radius: 0.125rem;
-    color: #fff;
+    color: var(--fgColor);
     content: attr(data-title);
     font-size: 0.75rem;
     padding: 0.5rem 1rem;
