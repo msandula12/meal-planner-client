@@ -42,20 +42,18 @@ function Header({ goToLogIn }: Props) {
             <>
               <span>
                 Welcome,{' '}
-                <Tooltip
-                  content="Go to schedule"
-                  trigger={
-                    <Link className="accent-text" to={Routes.SCHEDULE}>
-                      {user.name}
-                    </Link>
-                  }
-                />
+                <Tooltip content="Go to schedule">
+                  <Link className="accent-text" to={Routes.SCHEDULE}>
+                    {user.name}
+                  </Link>
+                </Tooltip>
                 !
               </span>
-              <Tooltip
-                content="Log out"
-                trigger={<BiLogOut className="icon" onClick={logOut} />}
-              />
+              <Tooltip content="Log out">
+                <span>
+                  <BiLogOut className="icon" onClick={logOut} />
+                </span>
+              </Tooltip>
             </>
           ) : (
             <>

@@ -8,6 +8,8 @@ import { Routes } from 'constants/enums';
 import { changeUser } from 'redux/reducers/userSlice';
 import { isValidEmail } from 'utils/helpers';
 
+import Tooltip from 'components/Tooltip/Tooltip';
+
 const MIN_PASSWORD_LENGTH = 6;
 
 type Props = {
@@ -150,13 +152,11 @@ function SignUp({ toggleForm }: Props) {
               type={showPassword ? 'text' : 'password'}
               value={values.password}
             />
-            <span
-              className="input-icon"
-              onClick={toggleShowPassword}
-              title={`${showPassword ? 'Hide' : 'Show'} password`}
-            >
-              {showPassword ? <BiHide /> : <BiShow />}
-            </span>
+            <Tooltip content={`${showPassword ? 'Hide' : 'Show'} password`}>
+              <span className="input-icon" onClick={toggleShowPassword}>
+                {showPassword ? <BiHide /> : <BiShow />}
+              </span>
+            </Tooltip>
           </div>
           {errors.password && (
             <div className="error-msg">{errors.password}</div>
@@ -176,13 +176,13 @@ function SignUp({ toggleForm }: Props) {
               type={showConfirmPassword ? 'text' : 'password'}
               value={values.confirmPassword}
             />
-            <span
-              className="input-icon"
-              onClick={toggleShowConfirmPassword}
-              title={`${showConfirmPassword ? 'Hide' : 'Show'} password`}
+            <Tooltip
+              content={`${showConfirmPassword ? 'Hide' : 'Show'} password`}
             >
-              {showConfirmPassword ? <BiHide /> : <BiShow />}
-            </span>
+              <span className="input-icon" onClick={toggleShowConfirmPassword}>
+                {showConfirmPassword ? <BiHide /> : <BiShow />}
+              </span>
+            </Tooltip>
           </div>
           {errors.confirmPassword && (
             <div className="error-msg">{errors.confirmPassword}</div>

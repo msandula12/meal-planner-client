@@ -1,18 +1,17 @@
-import { ReactNode } from 'react';
+import { cloneElement, ReactElement } from 'react';
 
 import './Tooltip.scss';
 
 type Props = {
+  children: ReactElement;
   content: string;
-  trigger: ReactNode;
 };
 
-function Tooltip({ content, trigger }: Props) {
-  return (
-    <span className="tooltip fade" data-title={content}>
-      {trigger}
-    </span>
-  );
+function Tooltip({ children, content }: Props) {
+  return cloneElement(children, {
+    'data-title': content,
+    className: `${children.props.className} tooltip fade`,
+  });
 }
 
 export default Tooltip;
