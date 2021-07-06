@@ -49,10 +49,8 @@ function Header({ goToLogIn }: Props) {
                 </Tooltip>
                 !
               </span>
-              <Tooltip content="Log out">
-                <span>
-                  <BiLogOut className="icon" onClick={logOut} />
-                </span>
+              <Tooltip content="Log out" wrapped>
+                <BiLogOut className="icon" onClick={logOut} />
               </Tooltip>
             </>
           ) : (

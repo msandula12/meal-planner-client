@@ -30,6 +30,17 @@ export const formatDate = (date: string) => {
   return isToday(date) ? 'Today' : dayjs(date).format('MMM D');
 };
 
+export const getDocumentOffsetPosition = (el: HTMLElement) => {
+  const { left, top } = el.getBoundingClientRect();
+  const { pageXOffset, pageYOffset } = window;
+  const { clientLeft, clientTop } = document.documentElement;
+
+  return {
+    left: left + pageXOffset - clientLeft,
+    top: top + pageYOffset - clientTop,
+  };
+};
+
 export const isSameday = (date1: string, date2: string) =>
   dayjs(date1).isSame(date2, 'day');
 
