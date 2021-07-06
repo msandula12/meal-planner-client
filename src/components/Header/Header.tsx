@@ -7,6 +7,7 @@ import { Routes } from 'constants/enums';
 import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
 import DarkModeToggle from 'components/DarkModeToggle/DarkModeToggle';
+import Tooltip from 'components/Tooltip/Tooltip';
 
 import './Header.scss';
 
@@ -51,7 +52,10 @@ function Header({ goToLogIn }: Props) {
                 !
               </span>
               {/* <BiCog className="icon" title="Settings" /> */}
-              <BiLogOut className="icon" onClick={logOut} title="Logout" />
+              <Tooltip
+                content={<BiLogOut className="icon" onClick={logOut} />}
+                title="Log out"
+              />
             </>
           ) : (
             <>
