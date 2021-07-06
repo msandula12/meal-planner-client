@@ -79,7 +79,7 @@ function MealPlanner() {
         <Header goToLogIn={goToLogIn} />
         {isViewingDemo && (
           <p className="placeholder demo-text">
-            You are viewing a readonly demo.
+            You are viewing a read-only demo.
           </p>
         )}
         <section className="meal-planner-dashboard">
