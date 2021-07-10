@@ -13,6 +13,7 @@ import { Routes } from 'constants/enums';
 import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
 import LoadingWrapper from '../Loading/LoadingWrapper';
+import Tooltip from 'components/Tooltip/Tooltip';
 
 type Props = {
   toggleForm: () => void;
@@ -150,23 +151,21 @@ function LogIn({ toggleForm }: Props) {
               type={showPassword ? 'text' : 'password'}
               value={values.password}
             />
-            <span
-              className="input-icon"
-              onClick={toggleShowPassword}
-              title={`${showPassword ? 'Hide' : 'Show'} password`}
-            >
-              {showPassword ? (
-                <BiHide
-                  className="icon"
-                  style={{ fill: 'rgba(0, 0, 0, 0.8)' }}
-                />
-              ) : (
-                <BiShow
-                  className="icon"
-                  style={{ fill: 'rgba(0, 0, 0, 0.8)' }}
-                />
-              )}
-            </span>
+            <Tooltip content={`${showPassword ? 'Hide' : 'Show'} password`}>
+              <span className="input-icon" onClick={toggleShowPassword}>
+                {showPassword ? (
+                  <BiHide
+                    className="icon"
+                    style={{ fill: 'rgba(0, 0, 0, 0.8)' }}
+                  />
+                ) : (
+                  <BiShow
+                    className="icon"
+                    style={{ fill: 'rgba(0, 0, 0, 0.8)' }}
+                  />
+                )}
+              </span>
+            </Tooltip>
           </div>
           {errors.password && (
             <div className="error-msg">{errors.password}</div>

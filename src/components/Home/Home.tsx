@@ -55,7 +55,16 @@ function Home() {
         </section>
       </main>
       <footer className="home-footer">
-        Copyright &copy;{dayjs().year()} Mike Sandula
+        View the{' '}
+        <a
+          className="accent-text"
+          href="https://github.com/msandula12/meal-planner-client"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          source code
+        </a>
+        . Copyright &copy;{dayjs().year()} Mike Sandula.
       </footer>
     </div>
   );

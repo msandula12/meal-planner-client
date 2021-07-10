@@ -11,6 +11,7 @@
   --fgColor: #e8e8e8;
   --primaryColor: #{lighten(#2b75b9, 40%)};
   --primaryColorDark: #{lighten(#2b75b9, 30%)};
+  --primaryColorOpaque: #{rgba(#2b75b9, 0.2)};
   --shadowColor: rgba(0, 0, 0, 0.4);
   // Font colors
   --fontColorBody: #1c1c1c;
@@ -26,6 +27,7 @@
     --fgColor: #1c1c1c;
     --primaryColor: #{darken(#2b75b9, 20%)};
     --primaryColorDark: #{darken(#2b75b9, 30%)};
+    --primaryColorOpaque: #{rgba(#2b75b9, 0.2)};
     --shadowColor: rgba(255, 255, 255, 0.1);
     // Font colors
     --fontColorBody: #e8e8e8;

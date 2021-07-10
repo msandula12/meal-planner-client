@@ -133,7 +133,11 @@ ul {
     font-size: 1.25rem;
     position: absolute;
     right: 0.75rem;
-    top: 0.75rem;
+    top: calc(0.75rem + 2px);
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

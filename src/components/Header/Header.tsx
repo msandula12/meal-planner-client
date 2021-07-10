@@ -7,6 +7,7 @@ import { Routes } from 'constants/enums';
 import { changeUser, selectCurrentUser } from 'redux/reducers/userSlice';
 
 import DarkModeToggle from 'components/DarkModeToggle/DarkModeToggle';
+import Tooltip from 'components/Tooltip/Tooltip';
 
 import './Header.scss';
 
@@ -41,17 +42,16 @@ function Header({ goToLogIn }: Props) {
             <>
               <span>
                 Welcome,{' '}
-                <Link
-                  className="accent-text"
-                  to={Routes.SCHEDULE}
-                  title="Go to schedule"
-                >
-                  {user.name}
-                </Link>
+                <Tooltip content="Go to schedule">
+                  <Link className="accent-text" to={Routes.SCHEDULE}>
+                    {user.name}
+                  </Link>
+                </Tooltip>
                 !
               </span>
-              {/* <BiCog className="icon" title="Settings" /> */}
-              <BiLogOut className="icon" onClick={logOut} title="Logout" />
+              <Tooltip content="Log out" wrapped>
+                <BiLogOut className="icon" onClick={logOut} />
+              </Tooltip>
             </>
           ) : (
             <>
