@@ -18,7 +18,6 @@ body {
   font-family: $bodyFont;
   min-height: 100vh;
   color: var(--fontColorBody);
-  overflow-x: hidden;
 }
 
 button,
@@ -195,6 +194,6 @@ ul {
   }
   100% {
     opacity: 1;
-    transform: none;
+    transform: perspective(0) rotateX(0);
   }
 }
