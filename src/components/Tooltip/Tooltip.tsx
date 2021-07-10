@@ -1,7 +1,6 @@
 import { cloneElement, ReactElement, useEffect, useRef, useState } from 'react';
+import { usePopper } from 'react-popper';
 import classNames from 'classnames';
-
-import { getDocumentOffsetPosition } from 'utils/helpers';
 
 import './Tooltip.scss';
 
@@ -12,54 +11,62 @@ type Props = {
 };
 
 function Tooltip({ children, content, wrapped }: Props) {
-  const ref = useRef<HTMLElement | null>(null);
-
   const [isVisible, setIsVisible] = useState(false);
 
-  const [tooltipPosition, setTooltipPosition] = useState({
-    left: '0px',
-    top: '0px',
-  });
+  const childrenRef = useRef<HTMLElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
+
+  const { attributes, forceUpdate, styles } = usePopper(
+    childrenRef.current,
+    tooltipRef.current,
+    {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8],
+          },
+        },
+      ],
+      placement: 'bottom',
+    }
+  );
 
   useEffect(() => {
-    const node = ref.current;
-    document.addEventListener('scroll', hideTooltip);
+    const node = childrenRef.current;
+
+    const showTooltip = () => {
+      if (forceUpdate) {
+        forceUpdate();
+      }
+      setIsVisible(true);
+    };
+
+    const hideTooltip = () => {
+      setIsVisible(false);
+      if (forceUpdate) {
+        forceUpdate();
+      }
+    };
+
     if (node) {
-      const { left, top } = getDocumentOffsetPosition(node);
-      setTooltipPosition({
-        left: `${left}px`,
-        top: `calc(2.5rem + ${top}px)`,
-      });
+      document.addEventListener('scroll', hideTooltip);
       node.addEventListener('mouseover', showTooltip);
       node.addEventListener('mouseout', hideTooltip);
     }
 
     return () => {
-      document.removeEventListener('scroll', hideTooltip);
       if (node) {
+        document.removeEventListener('scroll', hideTooltip);
         node.removeEventListener('mouseover', showTooltip);
         node.removeEventListener('mouseout', hideTooltip);
       }
     };
-  }, []);
+  }, [forceUpdate]);
 
-  const showTooltip = () => {
-    setIsVisible(true);
-    if (ref.current) {
-      const { left, top } = getDocumentOffsetPosition(ref.current);
-      setTooltipPosition({
-        left: `${left}px`,
-        top: `calc(2.5rem + ${top}px)`,
-      });
-    }
-  };
-
-  const hideTooltip = () => {
-    setIsVisible(false);
-  };
-
-  const cls = classNames('tooltip', {
+  const tooltipCls = classNames('tooltip', {
     fade: isVisible,
+    hidden: !isVisible,
   });
 
   return (
@@ -70,16 +77,22 @@ function Tooltip({ children, content, wrapped }: Props) {
             // SVG elements need a wrapper for the ref to work correctly
             <span style={{ display: 'inline-flex' }}>{children}</span>,
             {
-              ref: (element: HTMLElement) => (ref.current = element),
+              ref: (element: HTMLElement) => (childrenRef.current = element),
             }
           )
         : cloneElement(children, {
-            ref: (element: HTMLElement) => (ref.current = element),
+            ref: (element: HTMLElement) => (childrenRef.current = element),
           })}
       {/* The actual tooltip element */}
-      <span className={cls} style={tooltipPosition}>
+      <div
+        ref={tooltipRef}
+        className={tooltipCls}
+        role="tooltip"
+        style={styles.popper}
+        {...attributes.popper}
+      >
         {content}
-      </span>
+      </div>
     </>
   );
 }
